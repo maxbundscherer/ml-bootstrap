@@ -67,6 +67,8 @@ class IProjectHandler:
         self._project_stopwatches[key] = time.time()
 
     def _stop_stopwatch(self, key: str) -> float:
+        if key not in self._project_stopwatches:
+            raise ValueError("Stopwatch with key '" + key + "' does not exist")
         t = self._project_stopwatches[key]
         del self._project_stopwatches[key]
         return time.time() - t
@@ -76,7 +78,13 @@ class IProjectHandler:
         self._start_stopwatch(key)
 
     def stopwatch_stop(self, key: str):
-        self.log_debug("Stop Stopwatch '" + key + "'")
+        sec: float = self._stop_stopwatch(key)
+        mins = sec // 60
+        sec = sec % 60
+        hours = mins // 60
+        mins = mins % 60
+        out: str = "{0}h {1}m {2}s".format(int(hours), int(mins), round(sec, 2))
+        self.log_debug("Stop Stopwatch '" + key + "' " + out)
 
     @staticmethod
     def log_debug(message: str):
