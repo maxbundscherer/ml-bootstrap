@@ -25,7 +25,8 @@ class IStage:
         self._file_path_cache = self._project_handler.get_file_path_cache() + "stage-" + stage_identifier + "/"
 
     def init_stage(self):
-        self._project_handler.log_info("Init Stage '" + self._stage_title + "' (" + self._stage_identifier + ")")
+        self.log_debug("")
+        self.log_info("Init Stage '" + self._stage_title + "' (" + self._stage_identifier + ")")
 
         if not os.path.exists(self.get_file_path_out()):
             os.makedirs(self.get_file_path_out())
@@ -33,13 +34,13 @@ class IStage:
         if not os.path.exists(self.get_file_path_cache()):
             os.makedirs(self.get_file_path_cache())
 
-        self._project_handler.stopwatch_start("Stage-" + self._stage_identifier)
+        self.stopwatch_start("Stage-" + self._stage_identifier)
 
     def finish_stage(self):
-        self._project_handler.stopwatch_stop("Stage-" + self._stage_identifier)
-        self._project_handler.log_info("Finish Stage '" + self._stage_title + "' (" + self._stage_identifier + ")")
+        self.stopwatch_stop("Stage-" + self._stage_identifier)
+        self.log_debug("Finish Stage '" + self._stage_title + "' (" + self._stage_identifier + ")")
 
-    def perform(self):
+    def run_stage(self, kwargs):
         raise NotImplementedError
 
     def get_file_path_data(self) -> str:
@@ -62,3 +63,9 @@ class IStage:
 
     def log_error(self, message: str):
         self._project_handler.log_error(message)
+
+    def stopwatch_start(self, key: str):
+        self._project_handler.stopwatch_start(key)
+
+    def stopwatch_stop(self, key: str):
+        self._project_handler.stopwatch_stop(key)

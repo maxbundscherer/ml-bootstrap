@@ -88,6 +88,7 @@ class SimpleProjectHandler(IProjectHandler):
 
     def finish_project(self):
 
+        self.log_debug("")
         self.stopwatch_stop("Complete Run")
 
         if self._project_stopwatches is not None:
