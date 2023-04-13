@@ -14,14 +14,12 @@ tbd tbd tbd
 
 ## Let's get started
 
-### Requirements
+### Install Requirements
 
-- tbd
-- tbd
+- `pip install -r requirements.txt`
 
 ### Run
 
-- `pip install -r requirements.txt`
 - `python main.py`
 
 ## TODOS
