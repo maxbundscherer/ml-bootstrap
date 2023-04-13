@@ -13,16 +13,17 @@ class ExampleStage0(IStage):
                  ):
         super().__init__(project_handler, stage_title, stage_identifier)
 
-        self.file_path_test: str = self.get_file_path_out("test.txt")
+        self.test_artifact_path: str = self.get_file_path_out("test.txt")
 
     def run_stage(self):
-        self._first_method()
+        self._sample_write()
 
-    def _first_method(self):
-        self.log_info("This is a Test. Write to " + self.file_path_test)
+    def _sample_write(self):
+        self.log_info("This is a Test. Write to " + self.test_artifact_path)
 
-        with open(self.file_path_test, "w") as file:
-            file.write("Hello World! " + str(time.time()))
+        with open(self.test_artifact_path, "w") as file:
+            file.write("Hello World! " + str(int(time.time())))
 
         self.log_debug("Data path: " + self.get_file_path_data())
+        self.log_debug("Cache path: " + self.get_file_path_cache())
         self.log_debug("Out path: " + self.get_file_path_out())
