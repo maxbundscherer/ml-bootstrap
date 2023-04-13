@@ -30,13 +30,13 @@ class SimpleProjectHandler(IProjectHandler):
         if not os.path.exists(file_path_root):
             raise ValueError("Root File path must exist '" + file_path_root + "'")
 
-        if project_version_tag is None:
+        if project_version_tag == "":
             raise ValueError("Project Version Tag must not be None")
 
-        file_path_project = file_path_root + project_version_tag + "/"
+        self._file_path_project = file_path_root + project_version_tag + "/"
 
-        if file_path_data is None:
-            self._file_path_data = file_path_project + "data/"
+        if file_path_data == "":
+            self._file_path_data = self._file_path_project + "data/"
         else:
             self.log_debug("Custom Data Path: '" + file_path_data + "'")
 
@@ -45,14 +45,14 @@ class SimpleProjectHandler(IProjectHandler):
 
             self._file_path_data = file_path_data
 
-        if not file_path_data.endswith("/"):
+        if not self._file_path_data.endswith("/"):
             raise ValueError("Data File path must end with '/'")
 
-        self._file_path_project = file_path_project
-        self._file_path_out = file_path_project + "out/"
-        self._file_path_cache = file_path_project + "cache/"
+        self._file_path_out = self._file_path_project + "out/"
+        self._file_path_cache = self._file_path_project + "cache/"
 
         self._project_title: str = project_title
+        self._project_version_tag: str = project_version_tag
         self._logging_level = logging_level
 
         self._project_stopwatches: dict = {}
@@ -63,7 +63,7 @@ class SimpleProjectHandler(IProjectHandler):
 
         logging.basicConfig(level=self._logging_level, format='%(name)s - %(levelname)-8s - %(message)s')
 
-        self.log_debug("Init Project '" + self._project_title + "'")
+        self.log_debug("Init Project '" + self._project_title + "' (" + self._project_version_tag + ")")
 
         self.log_debug("Data Path: '" + self._get_file_path_project() + "'")
 
