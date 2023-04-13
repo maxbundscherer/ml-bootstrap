@@ -21,9 +21,9 @@ class IProjectHandler:
 
         logging.basicConfig(level=logging_level, format='%(name)s - %(levelname)-8s - %(message)s')
 
-        self.log_info("Init Project\t'" + self._project_title + "'")
+        self.log_debug("Start Init Project\t'" + self._project_title + "'")
 
-        self.log_debug("Data Path:\t'" + self._get_file_path_project() + "'")
+        self.log_debug("Data Path:\t\t\t'" + self._get_file_path_project() + "'")
 
         if not os.path.exists(self._get_file_path_project()):
             self.log_warning("Create Project Folder '" + self._get_file_path_project() + "'")
@@ -41,7 +41,7 @@ class IProjectHandler:
             self.log_warning("Create Cache Folder '" + self.get_file_path_cache() + "'")
             os.makedirs(self.get_file_path_cache())
 
-        self.log_info("End Init Project '" + self._project_title + "'")
+        self.log_debug("End Init Project\t\t'" + self._project_title + "'")
 
     def _get_file_path_project(self) -> str:
         return self._file_path_project
