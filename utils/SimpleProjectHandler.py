@@ -63,7 +63,7 @@ class SimpleProjectHandler(IProjectHandler):
         self.log_debug("Init Project '" + self._project_title + "' (" + self._project_version_tag + ")")
 
         self.log_debug("Project Path: '" + self._get_file_path_project() + "'")
-        self.log_debug("Data Path: '" + self.get_file_path_data() + "'")
+        # self.log_debug("Data Path: '" + self.get_file_path_data() + "'")
         # self.log_debug("Out Path: '" + self.get_file_path_out() + "'")
         # self.log_debug("Cache Path: '" + self.get_file_path_cache() + "'")
 
@@ -87,7 +87,7 @@ class SimpleProjectHandler(IProjectHandler):
 
     def finish_project(self):
 
-        self.log_debug("Finish Project '" + self._project_title + "'")
+        self.log_debug("Finish Project '" + self._project_title + "' (" + self._project_version_tag + ")")
 
         self.stopwatch_stop("Complete Run")
 
