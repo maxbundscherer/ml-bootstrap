@@ -88,13 +88,13 @@ class SimpleProjectHandler(IProjectHandler):
 
     def finish_project(self):
 
-        self.log_debug("Finish Project '" + self._project_title + "' (" + self._project_version_tag + ")")
-
         self.stopwatch_stop("Complete Run")
 
         if self._project_stopwatches is not None:
             for key in self._project_stopwatches:
                 self.log_warning("Stopwatch '" + key + "' is still running")
+
+        self.log_debug("Finish Project '" + self._project_title + "' (" + self._project_version_tag + ")")
 
     def _get_file_path_project(self) -> str:
         return self._file_path_project
