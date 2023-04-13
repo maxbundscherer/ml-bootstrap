@@ -1,5 +1,5 @@
 from utils.IProjectHandler import IProjectHandler
 
 
-class ExampleProjectHandler(IProjectHandler):
+class SimpleProjectHandler(IProjectHandler):
     pass

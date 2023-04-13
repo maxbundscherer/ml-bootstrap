@@ -1,11 +1,11 @@
 import logging
 
 from utils import IProjectHandler
-from utils.ExampleProjectHandler import ExampleProjectHandler
+from utils.SimpleProjectHandler import SimpleProjectHandler
 
 
 def run_main():
-    project_handler: IProjectHandler = ExampleProjectHandler(
+    project_handler: IProjectHandler = SimpleProjectHandler(
         project_title="Example Project",
         file_path_project="/Users/maximilianbundscherer/Desktop/test/",
         logging_level=logging.DEBUG
