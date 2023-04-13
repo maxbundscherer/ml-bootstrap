@@ -12,7 +12,7 @@ class IProjectHandler:
     def get_file_path_data(self) -> str:
         raise NotImplementedError
 
-    def get_file_path_output(self) -> str:
+    def get_file_path_out(self) -> str:
         raise NotImplementedError
 
     def get_file_path_cache(self) -> str:

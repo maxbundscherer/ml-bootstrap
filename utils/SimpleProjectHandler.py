@@ -7,17 +7,50 @@ from utils.IProjectHandler import IProjectHandler
 
 class SimpleProjectHandler(IProjectHandler):
 
-    def __init__(self, project_title: str, file_path_project: str, logging_level: int = logging.DEBUG):
-
-        if not project_title:
-            raise ValueError("Project title must not be empty")
+    def __init__(
+            self,
+            file_path_project: str,
+            file_path_data: str = "",
+            project_title: str = "My Project",
+            project_version_tag: str = "v0",
+            logging_level: int = logging.DEBUG
+    ):
+        """
+        Simple Project Handler. Automatically creates folders and provides utils.
+        :param file_path_project: File Path to Project
+        :param file_path_data: File Path to Data (if not specified, it will be set to file_path_project + "data/")
+        :param project_title: Title of the Project
+        :param project_version_tag: Version Tag of the Project
+        :param logging_level: Logging Level
+        """
 
         if not file_path_project.endswith("/"):
-            raise ValueError("Project file path must end with '/'")
+            raise ValueError("Project File path must end with '/'")
+
+        if not os.path.exists(file_path_project):
+            raise ValueError("Project File path must exist '" + file_path_project + "'")
+
+        if project_version_tag is None:
+            raise ValueError("Project Version Tag must not be None")
+
+        file_path_project = file_path_project + project_version_tag + "/"
+
+        if file_path_data is None:
+            self._file_path_data = file_path_project + "data/"
+        else:
+            self.log_debug("Custom Data Path: '" + file_path_data + "'")
+            self._file_path_data = file_path_data
+
+        if not file_path_data.endswith("/"):
+            raise ValueError("Data File path must end with '/'")
+
+        self._file_path_project = file_path_project
+        self._file_path_out = file_path_project + "out/"
+        self._file_path_cache = file_path_project + "cache/"
 
         self._project_title: str = project_title
-        self._file_path_project: str = file_path_project
         self._logging_level = logging_level
+
         self._project_stopwatches: dict = {}
 
         super().__init__()
@@ -38,9 +71,9 @@ class SimpleProjectHandler(IProjectHandler):
             self.log_warning("Create Data Folder '" + self.get_file_path_data() + "'")
             os.makedirs(self.get_file_path_data())
 
-        if not os.path.exists(self.get_file_path_output()):
-            self.log_warning("Create Output Folder '" + self.get_file_path_output() + "'")
-            os.makedirs(self.get_file_path_output())
+        if not os.path.exists(self.get_file_path_out()):
+            self.log_warning("Create Output Folder '" + self.get_file_path_out() + "'")
+            os.makedirs(self.get_file_path_out())
 
         if not os.path.exists(self.get_file_path_cache()):
             self.log_warning("Create Cache Folder '" + self.get_file_path_cache() + "'")
@@ -62,13 +95,13 @@ class SimpleProjectHandler(IProjectHandler):
         return self._file_path_project
 
     def get_file_path_data(self) -> str:
-        return self._get_file_path_project() + "data/"
+        return self._file_path_data
 
-    def get_file_path_output(self) -> str:
-        return self._get_file_path_project() + "output/"
+    def get_file_path_out(self) -> str:
+        return self._file_path_out
 
     def get_file_path_cache(self) -> str:
-        return self._get_file_path_project() + "cache/"
+        return self._file_path_cache
 
     def _start_stopwatch(self, key: str):
         if key in self._project_stopwatches:
