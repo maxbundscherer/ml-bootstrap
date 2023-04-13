@@ -25,7 +25,7 @@ def run_main():
     stage_0: ExampleStage0 = ExampleStage0(
         project_handler=project_handler,
         stage_title="Preload Data",
-        stage_identifier="preload",
+        stage_identifier="00_preload",
     )
     stage_0.init_stage()
     stage_0.run_stage()
@@ -34,7 +34,7 @@ def run_main():
     stage_1: ExampleStage1 = ExampleStage1(
         project_handler=project_handler,
         stage_title="Preprocess Data",
-        stage_identifier="preprocess",
+        stage_identifier="01_preprocess",
         example_stage_0=stage_0
     )
     stage_1.init_stage()
