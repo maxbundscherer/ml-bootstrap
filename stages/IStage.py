@@ -20,6 +20,7 @@ class IStage:
         self._stage_title: str = stage_title
         self._stage_identifier: str = stage_identifier
 
+        self._file_path_data = self._project_handler.get_file_path_data()
         self._file_path_out = self._project_handler.get_file_path_out() + "stage-" + stage_identifier + "/"
         self._file_path_cache = self._project_handler.get_file_path_cache() + "stage-" + stage_identifier + "/"
 
@@ -38,8 +39,26 @@ class IStage:
         self._project_handler.stopwatch_stop("Stage-" + self._stage_identifier)
         self._project_handler.log_info("Finish Stage '" + self._stage_title + "' (" + self._stage_identifier + ")")
 
+    def perform(self):
+        raise NotImplementedError
+
+    def get_file_path_data(self) -> str:
+        return self._file_path_data
+
     def get_file_path_out(self) -> str:
         return self._file_path_out
 
     def get_file_path_cache(self) -> str:
         return self._file_path_cache
+
+    def log_debug(self, message: str):
+        self._project_handler.log_debug(message)
+
+    def log_info(self, message: str):
+        self._project_handler.log_info(message)
+
+    def log_warning(self, message: str):
+        self._project_handler.log_warning(message)
+
+    def log_error(self, message: str):
+        self._project_handler.log_error(message)
