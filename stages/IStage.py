@@ -45,7 +45,7 @@ class IStage:
         self.stopwatch_stop("Stage-" + self._stage_identifier)
         self.log_debug("Finish Stage '" + self._stage_title + "' (" + self._stage_identifier + ")")
 
-    def run_stage(self, kwargs):
+    def run_stage(self):
         raise NotImplementedError
 
     def get_file_path_data(self, file_path_sub: str = "") -> str:

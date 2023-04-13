@@ -1,6 +1,7 @@
 import logging
 
 from stages.ExampleStage0 import ExampleStage0
+from stages.ExampleStage1 import ExampleStage1
 
 from utils import IProjectHandler
 from utils.SimpleProjectHandler import SimpleProjectHandler
@@ -27,16 +28,17 @@ def run_main():
         stage_identifier="preload",
     )
     stage_0.init_stage()
-    stage_0.run_stage(example_str="Bla")
+    stage_0.run_stage()
     stage_0.finish_stage()
 
-    stage_1: ExampleStage0 = ExampleStage0(
+    stage_1: ExampleStage1 = ExampleStage1(
         project_handler=project_handler,
         stage_title="Preprocess Data",
         stage_identifier="preprocess",
+        example_stage_0=stage_0
     )
     stage_1.init_stage()
-    stage_1.run_stage(example_str="Blub")
+    stage_1.run_stage()
     stage_1.finish_stage()
 
     project_handler.finish_project()
