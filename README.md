@@ -24,7 +24,7 @@ tbd tbd tbd
 
 ## TODOS
 
-- [ ] Add Tranformer
+- [ ] Add Transformer
 - [ ] tbd
 - [ ] tbd
 - [ ] tbd
