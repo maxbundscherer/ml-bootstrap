@@ -43,3 +43,6 @@ class IProjectHandler:
     @staticmethod
     def log_space():
         raise NotImplementedError
+
+    def hide_logger_stage_prefix(self) -> bool:
+        raise NotImplementedError

@@ -13,7 +13,8 @@ class SimpleProjectHandler(IProjectHandler):
             file_path_data: str = "",
             project_title: str = "My Project",
             project_version_tag: str = "v0",
-            logging_level: int = logging.DEBUG
+            logging_level: int = logging.DEBUG,
+            hide_logger_stage_prefix: bool = False
     ):
         """
         Simple Project Handler. Automatically creates folders and provides utils.
@@ -22,10 +23,13 @@ class SimpleProjectHandler(IProjectHandler):
         :param project_title: Title of the Project
         :param project_version_tag: Version Tag of the Project
         :param logging_level: Logging Level
+        :param hide_logger_stage_prefix: Hide Logger Stage Prefix
         """
 
         logging.basicConfig(level=logging_level,
                             format='%(levelname)-8s - %(message)s')  # Default was '%(name)s - %(levelname)-8s - %(message)s'
+
+        self._hide_logger_stage_prefix = hide_logger_stage_prefix
 
         if not file_path_root.endswith("/"):
             raise ValueError("Root File path must end with '/'")
@@ -152,4 +156,7 @@ class SimpleProjectHandler(IProjectHandler):
 
     @staticmethod
     def log_space():
-        logging.debug("")
+        logging.info("")
+
+    def hide_logger_stage_prefix(self) -> bool:
+        return self._hide_logger_stage_prefix
