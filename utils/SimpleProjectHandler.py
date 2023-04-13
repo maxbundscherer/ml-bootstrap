@@ -40,8 +40,6 @@ class SimpleProjectHandler(IProjectHandler):
         if file_path_data == "":
             self._file_path_data = self._file_path_project + "data/"
         else:
-            self.log_debug("Custom Data Path: '" + file_path_data + "'")
-
             if not os.path.exists(file_path_data):
                 raise ValueError("Data File path must exist '" + file_path_data + "'")
 
@@ -66,8 +64,8 @@ class SimpleProjectHandler(IProjectHandler):
 
         self.log_debug("Project Path: '" + self._get_file_path_project() + "'")
         self.log_debug("Data Path: '" + self.get_file_path_data() + "'")
-        self.log_debug("Out Path: '" + self.get_file_path_out() + "'")
-        self.log_debug("Cache Path: '" + self.get_file_path_cache() + "'")
+        # self.log_debug("Out Path: '" + self.get_file_path_out() + "'")
+        # self.log_debug("Cache Path: '" + self.get_file_path_cache() + "'")
 
         if not os.path.exists(self._get_file_path_project()):
             self.log_warning("Create Project Folder '" + self._get_file_path_project() + "'")
