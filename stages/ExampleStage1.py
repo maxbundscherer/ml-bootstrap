@@ -23,3 +23,7 @@ class ExampleStage1(IStage):
 
         with open(self.test_artifact_path, "r") as file:
             self.log_info("Read: " + file.read())
+
+        self.log_debug("Data path: " + self.get_file_path_data())
+        self.log_debug("Cache path: " + self.get_file_path_cache())
+        self.log_debug("Out path: " + self.get_file_path_out())
