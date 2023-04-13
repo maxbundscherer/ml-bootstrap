@@ -24,6 +24,8 @@ class SimpleProjectHandler(IProjectHandler):
         :param logging_level: Logging Level
         """
 
+        logging.basicConfig(level=logging_level, format='%(name)s - %(levelname)-8s - %(message)s')
+
         if not file_path_root.endswith("/"):
             raise ValueError("Root File path must end with '/'")
 
@@ -53,7 +55,6 @@ class SimpleProjectHandler(IProjectHandler):
 
         self._project_title: str = project_title
         self._project_version_tag: str = project_version_tag
-        self._logging_level = logging_level
 
         self._project_stopwatches: dict = {}
 
@@ -61,11 +62,12 @@ class SimpleProjectHandler(IProjectHandler):
 
     def init_project(self):
 
-        logging.basicConfig(level=self._logging_level, format='%(name)s - %(levelname)-8s - %(message)s')
-
         self.log_debug("Init Project '" + self._project_title + "' (" + self._project_version_tag + ")")
 
-        self.log_debug("Data Path: '" + self._get_file_path_project() + "'")
+        self.log_debug("Project Path: '" + self._get_file_path_project() + "'")
+        self.log_debug("Data Path: '" + self.get_file_path_data() + "'")
+        self.log_debug("Out Path: '" + self.get_file_path_out() + "'")
+        self.log_debug("Cache Path: '" + self.get_file_path_cache() + "'")
 
         if not os.path.exists(self._get_file_path_project()):
             self.log_warning("Create Project Folder '" + self._get_file_path_project() + "'")
