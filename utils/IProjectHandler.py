@@ -1,5 +1,6 @@
 import logging
 import os
+import time
 
 
 class IProjectHandler:
@@ -14,16 +15,16 @@ class IProjectHandler:
 
         self._project_title: str = project_title
         self._file_path_project: str = file_path_project
+        self._logging_level = logging_level
+        self._project_stopwatches: dict = {}
 
-        self._init_project(logging_level)
+    def init_project(self):
 
-    def _init_project(self, logging_level: int):
+        logging.basicConfig(level=self._logging_level, format='%(name)s - %(levelname)-8s - %(message)s')
 
-        logging.basicConfig(level=logging_level, format='%(name)s - %(levelname)-8s - %(message)s')
+        self.log_debug("Init Project '" + self._project_title + "'")
 
-        self.log_debug("Start Init Project\t'" + self._project_title + "'")
-
-        self.log_debug("Data Path:\t\t\t'" + self._get_file_path_project() + "'")
+        self.log_debug("Data Path: '" + self._get_file_path_project() + "'")
 
         if not os.path.exists(self._get_file_path_project()):
             self.log_warning("Create Project Folder '" + self._get_file_path_project() + "'")
@@ -41,7 +42,12 @@ class IProjectHandler:
             self.log_warning("Create Cache Folder '" + self.get_file_path_cache() + "'")
             os.makedirs(self.get_file_path_cache())
 
-        self.log_debug("End Init Project\t\t'" + self._project_title + "'")
+        self.stopwatch_start("Complete Run")
+
+    def finish_project(self):
+
+        self.log_debug("Finish Project '" + self._project_title + "'")
+        self.stopwatch_stop("Complete Run")
 
     def _get_file_path_project(self) -> str:
         return self._file_path_project
@@ -54,6 +60,23 @@ class IProjectHandler:
 
     def get_file_path_cache(self) -> str:
         return self._get_file_path_project() + "cache/"
+
+    def _start_stopwatch(self, key: str):
+        if key in self._project_stopwatches:
+            raise ValueError("Stopwatch with key '" + key + "' already exists")
+        self._project_stopwatches[key] = time.time()
+
+    def _stop_stopwatch(self, key: str) -> float:
+        t = self._project_stopwatches[key]
+        del self._project_stopwatches[key]
+        return time.time() - t
+
+    def stopwatch_start(self, key: str):
+        self.log_debug("Start Stopwatch '" + key + "'")
+        self._start_stopwatch(key)
+
+    def stopwatch_stop(self, key: str):
+        self.log_debug("Stop Stopwatch '" + key + "'")
 
     @staticmethod
     def log_debug(message: str):
