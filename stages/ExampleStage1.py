@@ -19,10 +19,8 @@ class ExampleStage1(IStage):
         self._sample_read()
 
     def _sample_read(self):
-        self.log_info("This is a Test Read from " + self.test_artifact_path)
-
         with open(self.test_artifact_path, "r") as file:
-            self.log_info("Read: " + file.read())
+            self.log_info("This is a Test Read from " + self.test_artifact_path + ": " + file.read())
 
         self.log_debug("Data path: " + self.get_file_path_data())
         self.log_debug("Cache path: " + self.get_file_path_cache())
