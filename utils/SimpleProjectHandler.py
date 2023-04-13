@@ -24,7 +24,8 @@ class SimpleProjectHandler(IProjectHandler):
         :param logging_level: Logging Level
         """
 
-        logging.basicConfig(level=logging_level, format='%(name)s - %(levelname)-8s - %(message)s')
+        logging.basicConfig(level=logging_level,
+                            format='%(levelname)-8s - %(message)s')  # Default was '%(name)s - %(levelname)-8s - %(message)s'
 
         if not file_path_root.endswith("/"):
             raise ValueError("Root File path must end with '/'")
