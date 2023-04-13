@@ -18,10 +18,10 @@ class IProjectHandler:
     def get_file_path_cache(self) -> str:
         raise NotImplementedError
 
-    def stopwatch_start(self, key: str):
+    def stopwatch_start(self, key: str, prefix: str = ""):
         raise NotImplementedError
 
-    def stopwatch_stop(self, key: str):
+    def stopwatch_stop(self, key: str, prefix: str = ""):
         raise NotImplementedError
 
     @staticmethod
@@ -38,4 +38,8 @@ class IProjectHandler:
 
     @staticmethod
     def log_error(message: str):
+        raise NotImplementedError
+
+    @staticmethod
+    def log_space():
         raise NotImplementedError

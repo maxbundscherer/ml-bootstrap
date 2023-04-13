@@ -25,7 +25,7 @@ class IStage:
         self._file_path_cache = self._project_handler.get_file_path_cache() + "stage-" + stage_identifier + "/"
 
     def init_stage(self):
-        self.log_debug("")
+        self.log_space()
         self.log_info("Init Stage '" + self._stage_title + "' (" + self._stage_identifier + ")")
 
         if not os.path.exists(self.get_file_path_out()):
@@ -43,29 +43,35 @@ class IStage:
     def run_stage(self, kwargs):
         raise NotImplementedError
 
-    def get_file_path_data(self) -> str:
-        return self._file_path_data
+    def get_file_path_data(self, file_path: str = "") -> str:
+        return self._file_path_data + file_path
 
-    def get_file_path_out(self) -> str:
-        return self._file_path_out
+    def get_file_path_out(self, file_path: str = "") -> str:
+        return self._file_path_out + file_path
 
-    def get_file_path_cache(self) -> str:
-        return self._file_path_cache
+    def get_file_path_cache(self, file_path: str = "") -> str:
+        return self._file_path_cache + file_path
+
+    def _prefix_log_generator(self) -> str:
+        return "(" + self._stage_identifier + ") "
 
     def log_debug(self, message: str):
-        self._project_handler.log_debug(message)
+        self._project_handler.log_debug(self._prefix_log_generator() + message)
 
     def log_info(self, message: str):
-        self._project_handler.log_info(message)
+        self._project_handler.log_info(self._prefix_log_generator() + message)
 
     def log_warning(self, message: str):
-        self._project_handler.log_warning(message)
+        self._project_handler.log_warning(self._prefix_log_generator() + message)
 
     def log_error(self, message: str):
-        self._project_handler.log_error(message)
+        self._project_handler.log_error(self._prefix_log_generator() + message)
+
+    def log_space(self):
+        self._project_handler.log_space()
 
     def stopwatch_start(self, key: str):
-        self._project_handler.stopwatch_start(key)
+        self._project_handler.stopwatch_start(key, prefix=self._prefix_log_generator())
 
     def stopwatch_stop(self, key: str):
-        self._project_handler.stopwatch_stop(key)
+        self._project_handler.stopwatch_stop(key, prefix=self._prefix_log_generator())

@@ -88,7 +88,7 @@ class SimpleProjectHandler(IProjectHandler):
 
     def finish_project(self):
 
-        self.log_debug("")
+        self.log_space()
         self.stopwatch_stop("Complete Run")
 
         if self._project_stopwatches is not None:
@@ -121,18 +121,18 @@ class SimpleProjectHandler(IProjectHandler):
         del self._project_stopwatches[key]
         return time.time() - t
 
-    def stopwatch_start(self, key: str):
-        self.log_debug("Start Stopwatch '" + key + "'")
+    def stopwatch_start(self, key: str, prefix: str = ""):
+        self.log_debug(prefix + "Start Stopwatch '" + key + "'")
         self._start_stopwatch(key)
 
-    def stopwatch_stop(self, key: str):
+    def stopwatch_stop(self, key: str, prefix: str = ""):
         sec: float = self._stop_stopwatch(key)
         mins = sec // 60
         sec = sec % 60
         hours = mins // 60
         mins = mins % 60
         out: str = "{0}h {1}m {2}s".format(int(hours), int(mins), round(sec, 2))
-        self.log_debug("Stop Stopwatch '" + key + "' " + out)
+        self.log_debug(prefix + "Stop Stopwatch '" + key + "' " + out)
 
     @staticmethod
     def log_debug(message: str):
@@ -149,3 +149,7 @@ class SimpleProjectHandler(IProjectHandler):
     @staticmethod
     def log_error(message: str):
         logging.error(message)
+
+    @staticmethod
+    def log_space():
+        logging.debug("")
