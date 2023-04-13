@@ -9,7 +9,7 @@ class SimpleProjectHandler(IProjectHandler):
 
     def __init__(
             self,
-            file_path_project: str,
+            file_path_root: str,
             file_path_data: str = "",
             project_title: str = "My Project",
             project_version_tag: str = "v0",
@@ -17,28 +17,32 @@ class SimpleProjectHandler(IProjectHandler):
     ):
         """
         Simple Project Handler. Automatically creates folders and provides utils.
-        :param file_path_project: File Path to Project
+        :param file_path_root: File Path to Root
         :param file_path_data: File Path to Data (if not specified, it will be set to file_path_project + "data/")
         :param project_title: Title of the Project
         :param project_version_tag: Version Tag of the Project
         :param logging_level: Logging Level
         """
 
-        if not file_path_project.endswith("/"):
-            raise ValueError("Project File path must end with '/'")
+        if not file_path_root.endswith("/"):
+            raise ValueError("Root File path must end with '/'")
 
-        if not os.path.exists(file_path_project):
-            raise ValueError("Project File path must exist '" + file_path_project + "'")
+        if not os.path.exists(file_path_root):
+            raise ValueError("Root File path must exist '" + file_path_root + "'")
 
         if project_version_tag is None:
             raise ValueError("Project Version Tag must not be None")
 
-        file_path_project = file_path_project + project_version_tag + "/"
+        file_path_project = file_path_root + project_version_tag + "/"
 
         if file_path_data is None:
             self._file_path_data = file_path_project + "data/"
         else:
             self.log_debug("Custom Data Path: '" + file_path_data + "'")
+
+            if not os.path.exists(file_path_data):
+                raise ValueError("Data File path must exist '" + file_path_data + "'")
+
             self._file_path_data = file_path_data
 
         if not file_path_data.endswith("/"):
