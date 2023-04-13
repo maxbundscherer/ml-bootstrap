@@ -48,14 +48,14 @@ class IStage:
     def run_stage(self, kwargs):
         raise NotImplementedError
 
-    def get_file_path_data(self, file_path: str = "") -> str:
-        return self._file_path_data + file_path
+    def get_file_path_data(self, file_path_sub: str = "") -> str:
+        return self._file_path_data + file_path_sub
 
-    def get_file_path_out(self, file_path: str = "") -> str:
-        return self._file_path_out + file_path
+    def get_file_path_out(self, file_path_sub: str = "") -> str:
+        return self._file_path_out + file_path_sub
 
-    def get_file_path_cache(self, file_path: str = "") -> str:
-        return self._file_path_cache + file_path
+    def get_file_path_cache(self, file_path_sub: str = "") -> str:
+        return self._file_path_cache + file_path_sub
 
     def log_debug(self, message: str):
         self._project_handler.log_debug(self._log_prefix + message)
