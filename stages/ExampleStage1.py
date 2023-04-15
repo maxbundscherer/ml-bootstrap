@@ -1,27 +1,39 @@
-from utils.IProjectHandler import IProjectHandler
-from stages.IStage import IStage
-from stages import ExampleStage0
+from stages.Stage import Stage, T_OUTPUT
+from utils.Context import Context
 
 
-class ExampleStage1(IStage):
+class InputExampleStage1:
+    def __init__(self, test_file_path: str):
+        self.test_file_path: str = test_file_path
 
-    def __init__(self,
-                 project_handler: IProjectHandler,
-                 stage_title: str,
-                 stage_identifier: str,
-                 example_stage_0: ExampleStage0,
-                 ):
-        super().__init__(project_handler, stage_title, stage_identifier)
 
-        self.test_artifact_path: str = example_stage_0.test_artifact_path
+class ConfigExampleStage1:
+    pass
 
-    def run_stage(self):
-        self._sample_read()
 
-    def _sample_read(self):
-        with open(self.test_artifact_path, "r") as file:
-            self.log_info("This is a Test Read from " + self.test_artifact_path + ": " + file.read())
+class OutputExampleStage1:
+    pass
 
-        self.log_debug("Data path: " + self.get_file_path_data())
-        self.log_debug("Cache path: " + self.get_file_path_cache())
-        self.log_debug("Out path: " + self.get_file_path_out())
+
+class ExampleStage0(Stage[InputExampleStage1, ConfigExampleStage1, OutputExampleStage1]):
+
+    @staticmethod
+    def _preview(context: Context, inp: InputExampleStage1, conf: ConfigExampleStage1):
+        raise NotImplementedError()
+
+    @staticmethod
+    def _get_cached(context: Context, inp: InputExampleStage1, conf: ConfigExampleStage1) -> T_OUTPUT:
+        return None
+
+    @staticmethod
+    def _process(context: Context, inp: InputExampleStage1, conf: ConfigExampleStage1) -> OutputExampleStage1:
+        f = inp.test_file_path
+
+        with open(f, "r") as file:
+            context.log_info("This is a Test Read from " + f + ": " + file.read())
+
+        context.log_debug("Data path: " + context.get_file_path_data())
+        context.log_debug("Cache path: " + context.get_file_path_cache())
+        context.log_debug("Out path: " + context.get_file_path_out())
+
+        return OutputExampleStage1()

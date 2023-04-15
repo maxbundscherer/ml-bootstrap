@@ -1,6 +1,6 @@
 import time
 
-from stages.Stage import Stage, T_INPUT, T_CONFIG, T_OUTPUT
+from stages.Stage import Stage, T_OUTPUT
 from utils.Context import Context
 
 
@@ -21,16 +21,16 @@ class OutputExampleStage0:
 class ExampleStage0(Stage[InputExampleStage0, ConfigExampleStage0, OutputExampleStage0]):
 
     @staticmethod
-    def _preview(context: Context, data: T_INPUT, config: T_CONFIG):
+    def _preview(context: Context, inp: InputExampleStage0, conf: ConfigExampleStage0):
         raise NotImplementedError()
 
     @staticmethod
-    def _get_cached(context: Context, data: T_INPUT, config: T_CONFIG) -> T_OUTPUT:
+    def _get_cached(context: Context, inp: InputExampleStage0, conf: ConfigExampleStage0) -> T_OUTPUT:
         return None
 
     @staticmethod
-    def _process(context: Context, data: InputExampleStage0, config: ConfigExampleStage0) -> OutputExampleStage0:
-        f = context.get_file_path_out(config.test_file_name)
+    def _process(context: Context, inp: InputExampleStage0, conf: ConfigExampleStage0) -> OutputExampleStage0:
+        f = context.get_file_path_out(conf.test_file_name)
 
         context.log_info("This is a Test. Write to " + f)
 
