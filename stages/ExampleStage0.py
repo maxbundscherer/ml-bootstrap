@@ -22,7 +22,7 @@ class ExampleStage0(Stage[InputExampleStage0, ConfigExampleStage0, OutputExample
 
     @staticmethod
     def _preview(context: Context, inp: InputExampleStage0, conf: ConfigExampleStage0):
-        raise NotImplementedError()
+        pass
 
     @staticmethod
     def _get_cached(context: Context, inp: InputExampleStage0, conf: ConfigExampleStage0) -> OutputExampleStage0:
