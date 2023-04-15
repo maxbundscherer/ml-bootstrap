@@ -1,7 +1,7 @@
 import time
 
-from stages.Stage import Stage
-from utils.Context import Context
+from framework.Stage import Stage
+from framework.Context import Context
 
 
 class InputExampleStage0:

@@ -1,7 +1,7 @@
 import os
 
-from aggregates.Config import LoggingConfig, PathConfig
-from utils.Context import Context
+from framework.Config import LoggingConfig, PathConfig
+from framework.Context import Context
 
 
 class Environment:

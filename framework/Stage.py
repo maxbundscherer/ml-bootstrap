@@ -1,8 +1,8 @@
 from typing import TypeVar, Generic
 
-from aggregates.Config import PathConfig, LoggingConfig
-from utils.Context import Context
-from utils.Environment import Environment
+from framework.Config import PathConfig, LoggingConfig
+from framework.Context import Context
+from framework.Environment import Environment
 
 T_INPUT = TypeVar('T_INPUT')
 T_CONFIG = TypeVar('T_CONFIG')

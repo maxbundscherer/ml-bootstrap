@@ -2,7 +2,7 @@ import logging
 import os
 import time
 
-from aggregates.Config import PathConfig, LoggingConfig
+from framework.Config import PathConfig, LoggingConfig
 
 
 class Context:

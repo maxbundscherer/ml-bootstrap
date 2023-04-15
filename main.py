@@ -1,9 +1,9 @@
 import logging
 
-from aggregates.Config import LoggingConfig
+from framework.Config import LoggingConfig
 from stages.ExampleStage0 import ExampleStage0, InputExampleStage0, ConfigExampleStage0, OutputExampleStage0
 from stages.ExampleStage1 import ExampleStage1, InputExampleStage1, ConfigExampleStage1
-from utils.Environment import Environment
+from framework.Environment import Environment
 
 
 def run_main():
