@@ -1,4 +1,4 @@
-from stages.Stage import Stage, T_OUTPUT
+from stages.Stage import Stage
 from utils.Context import Context
 
 
@@ -22,8 +22,8 @@ class ExampleStage0(Stage[InputExampleStage1, ConfigExampleStage1, OutputExample
         raise NotImplementedError()
 
     @staticmethod
-    def _get_cached(context: Context, inp: InputExampleStage1, conf: ConfigExampleStage1) -> T_OUTPUT:
-        return None
+    def _get_cached(context: Context, inp: InputExampleStage1, conf: ConfigExampleStage1) -> OutputExampleStage1:
+        pass
 
     @staticmethod
     def _process(context: Context, inp: InputExampleStage1, conf: ConfigExampleStage1) -> OutputExampleStage1:
