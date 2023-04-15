@@ -1,17 +1,21 @@
+from dataclasses import dataclass
+
 from stages.ExampleStage0 import OutputExampleStage0
 from framework.Stage import Stage
 from framework.Context import Context
 
 
+@dataclass
 class InputExampleStage1:
-    def __init__(self, out_stage_0: OutputExampleStage0):
-        self.out_stage_0: OutputExampleStage0 = out_stage_0
+    out_stage_0: OutputExampleStage0
 
 
+@dataclass
 class ConfigExampleStage1:
     pass
 
 
+@dataclass
 class OutputExampleStage1:
     pass
 

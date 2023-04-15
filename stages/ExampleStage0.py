@@ -1,21 +1,23 @@
 import time
+from dataclasses import dataclass
 
 from framework.Stage import Stage
 from framework.Context import Context
 
 
+@dataclass
 class InputExampleStage0:
     pass
 
 
+@dataclass
 class ConfigExampleStage0:
-    def __init__(self, test_file_name: str):
-        self.test_file_name: str = test_file_name
+    test_file_name: str
 
 
+@dataclass
 class OutputExampleStage0:
-    def __init__(self, test_file_path: str):
-        self.test_file_path: str = test_file_path
+    test_file_path: str
 
 
 class ExampleStage0(Stage[InputExampleStage0, ConfigExampleStage0, OutputExampleStage0]):
