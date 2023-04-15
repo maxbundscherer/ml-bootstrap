@@ -58,7 +58,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
 
         context = Context(
             path_config=path_config,
-            logging_prefix="Stage-" + stage_id,
+            logging_prefix="St-" + stage_id,
             logging_config=logging_config
         )
 
@@ -72,8 +72,9 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
 
     def process(self) -> T_OUTPUT:
 
+        self._context.log_space()
         self._context.log_info("Started " + self._stage_title)
-        self._context.stopwatch_start("Stage-" + self._stage_id)
+        self._context.stopwatch_start("St-" + self._stage_id)
 
         out: T_OUTPUT = self._get_cached(
             context=self._context,
@@ -92,7 +93,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
             # Cache hit
             self._context.log_debug("[Already cached]")
 
-        self._context.stopwatch_stop("Stage-" + self._stage_id)
+        self._context.stopwatch_stop("St-" + self._stage_id)
         self._context.log_info("Stopped " + self._stage_title)
 
         return out

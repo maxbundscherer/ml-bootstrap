@@ -60,6 +60,7 @@ class Environment:
         self._context.stopwatch_start("Env-" + self._env_id)
 
     def stop(self):
+        self._context.log_space()
         self._context.stopwatch_stop("Env-" + self._env_id)
         self._context.log_info("Stopped")
 
