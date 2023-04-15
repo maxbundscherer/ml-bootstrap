@@ -96,3 +96,10 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
         self._context.log_info("Stopped " + self._stage_title)
 
         return out
+
+    def preview(self):
+        self._preview(
+            context=self._context,
+            data=self._data,
+            config=self._config
+        )
