@@ -93,8 +93,8 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
             # Cache hit
             self._context.log_debug("[Already cached]")
 
-        self._context.stopwatch_stop("St-" + self._stage_id)
-        self._context.log_info("Stopped " + self._stage_title)
+        o = self._context.stopwatch_stop("St-" + self._stage_id)
+        self._context.log_info("Stopped " + self._stage_title + " [" + o + "]")
 
         return out
 

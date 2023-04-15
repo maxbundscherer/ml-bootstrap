@@ -74,17 +74,18 @@ class Context:
         return time.time() - t
 
     def stopwatch_start(self, key: str):
-        self.log_debug("Start Stopwatch '" + key + "'")
+        # self.log_debug("Start Stopwatch '" + key + "'")
         self._start_stopwatch(key)
 
-    def stopwatch_stop(self, key: str):
+    def stopwatch_stop(self, key: str) -> str:
         sec: float = self._stop_stopwatch(key)
         mins = sec // 60
         sec = sec % 60
         hours = mins // 60
         mins = mins % 60
         out: str = "{0}h {1}m {2}s".format(int(hours), int(mins), round(sec, 2))
-        self.log_debug("Stop Stopwatch '" + key + "' " + out)
+        # self.log_debug("Stop Stopwatch '" + key + "' " + out)
+        return out
 
     def log_debug(self, message: str):
         logging.debug(self._logging_prefix + message)

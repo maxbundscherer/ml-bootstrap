@@ -10,6 +10,7 @@ class Environment:
                  logging_config: LoggingConfig,
                  file_path_local: str,
                  file_path_data: str = "",
+                 env_title: str = "Local Env",
                  env_id: str = "001_local",
                  ):
 
@@ -52,17 +53,22 @@ class Environment:
 
         # Set attributes
 
+        self._env_title: str = env_title
         self._env_id: str = env_id
         self._context: Context = context
 
     def start(self):
-        self._context.log_info("Started")
+        self._context.log_info("Started " + self._env_title)
         self._context.stopwatch_start("Env-" + self._env_id)
 
+        # self._context.log_debug("Data path: " + self._context.get_file_path_data())
+        # self._context.log_debug("Cache path: " + self._context.get_file_path_cache())
+        # self._context.log_debug("Out path: " + self._context.get_file_path_out())
+
     def stop(self):
+        o = self._context.stopwatch_stop("Env-" + self._env_id)
         self._context.log_space()
-        self._context.stopwatch_stop("Env-" + self._env_id)
-        self._context.log_info("Stopped")
+        self._context.log_info("Stopped " + self._env_title + " [" + o + "]")
 
     def get_context(self) -> Context:
         return self._context

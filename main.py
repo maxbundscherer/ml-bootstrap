@@ -13,6 +13,7 @@ def run_main():
     env: Environment = Environment(
         file_path_local=file_path_local,
         file_path_data="",
+        env_title="Local Env",
         env_id="001_local",
         logging_config=LoggingConfig(
             level=logging.DEBUG,
