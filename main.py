@@ -1,47 +1,62 @@
 import logging
 
-from stages.ExampleStage0 import ExampleStage0
-from stages.ExampleStage1 import ExampleStage1
-
-from utils import IProjectHandler
-from utils.SimpleProjectHandler import SimpleProjectHandler
+from aggregates.Config import LoggingConfig
+from stages.ExampleStage0 import ExampleStage0, InputExampleStage0, ConfigExampleStage0, OutputExampleStage0
+from stages.ExampleStage1 import ExampleStage1, InputExampleStage1, ConfigExampleStage1
+from utils.Environment import Environment
 
 
 def run_main():
-    # file_path_root = str(pathlib.Path().resolve()) + "/test/"  # Get current working directory
-    file_path_root = "/Users/maximilianbundscherer/Desktop/test/"  # Set path manually
+    # file_path_local = str(pathlib.Path().resolve()) + "/test/"  # Get current working directory
+    file_path_local = "/Users/maximilianbundscherer/Desktop/test/"  # Set path manually
 
-    project_handler: IProjectHandler = SimpleProjectHandler(
-        file_path_root=file_path_root,
+    env: Environment = Environment(
+        file_path_local=file_path_local,
         file_path_data="",
-        project_title="My Project",
-        project_version_tag="v0",
-        logging_level=logging.DEBUG,
-        hide_logger_stage_prefix=False
+        env_id="001_local",
+        logging_config=LoggingConfig(
+            level=logging.DEBUG,
+            hide_prefix=False
+        ),
     )
 
-    project_handler.init_project()
+    env.start()
 
     stage_0: ExampleStage0 = ExampleStage0(
-        project_handler=project_handler,
+        env=env,
+        logging_config=LoggingConfig(
+            level=logging.DEBUG,
+            hide_prefix=False
+        ),
         stage_title="Preload Data",
-        stage_identifier="00_preload",
+        stage_id="001_preload",
+        inp=InputExampleStage0(),
+        stage_config=ConfigExampleStage0(
+            test_file_name="test.txt"
+        )
     )
-    stage_0.init_stage()
-    stage_0.run_stage()
-    stage_0.finish_stage()
+
+    # stage_0.preview()
+    stage_0_out: OutputExampleStage0 = stage_0.process()
 
     stage_1: ExampleStage1 = ExampleStage1(
-        project_handler=project_handler,
-        stage_title="Preprocess Data",
-        stage_identifier="01_preprocess",
-        example_stage_0=stage_0
+        env=env,
+        logging_config=LoggingConfig(
+            level=logging.DEBUG,
+            hide_prefix=False
+        ),
+        stage_title="Filter Data",
+        stage_id="002_filter",
+        inp=InputExampleStage1(
+            out_stage_0=stage_0_out
+        ),
+        stage_config=ConfigExampleStage1()
     )
-    stage_1.init_stage()
-    stage_1.run_stage()
-    stage_1.finish_stage()
 
-    project_handler.finish_project()
+    # stage_1.preview()
+    stage_1.process()
+
+    env.stop()
 
 
 if __name__ == '__main__':

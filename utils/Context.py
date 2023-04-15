@@ -36,7 +36,7 @@ class Context:
 
         if not os.path.exists(path_config.file_path_data):
             self.log_warning("Create Data Folder '" + path_config.file_path_data + "'")
-            os.makedirs(path_config.file_path_out)
+            os.makedirs(path_config.file_path_data)
 
         if not os.path.exists(path_config.file_path_out):
             self.log_warning("Create Output Folder '" + path_config.file_path_out + "'")

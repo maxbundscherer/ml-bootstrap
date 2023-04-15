@@ -33,9 +33,9 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
                  env: Environment,
                  logging_config: LoggingConfig,
                  inp: T_INPUT,
-                 stage_title: str = "Preload",
+                 stage_config: T_CONFIG,
+                 stage_title: str = "Preload Data",
                  stage_id: str = "001_preload",
-                 stage_config: T_CONFIG = None,
                  ):
 
         # Check stage_id and stage_title
