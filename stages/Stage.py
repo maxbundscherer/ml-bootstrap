@@ -8,8 +8,8 @@ class Stage:
     def __init__(self,
                  env: Environment,
                  logging_config: LoggingConfig,
-                 stage_title: str = "My Stage",
-                 stage_id: str = "01-my-stage",
+                 stage_title: str = "Preload",
+                 stage_id: str = "001_preload",
                  ):
 
         # Check stage_id and stage_title

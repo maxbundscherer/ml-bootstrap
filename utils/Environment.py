@@ -10,7 +10,7 @@ class Environment:
                  logging_config: LoggingConfig,
                  file_path_local: str,
                  file_path_data: str = "",
-                 env_id: str = "v0",
+                 env_id: str = "001_local",
                  ):
 
         # Check local path and env_id
