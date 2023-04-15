@@ -1,29 +1,46 @@
 import time
 
-from stages.IStage import IStage
-from utils.IProjectHandler import IProjectHandler
+from stages.Stage import Stage, T_INPUT, T_CONFIG, T_OUTPUT
+from utils.Context import Context
 
 
-class ExampleStage0(IStage):
+class InputExampleStage0:
+    pass
 
-    def __init__(self,
-                 project_handler: IProjectHandler,
-                 stage_title: str,
-                 stage_identifier: str
-                 ):
-        super().__init__(project_handler, stage_title, stage_identifier)
 
-        self.test_artifact_path: str = self.get_file_path_out("test.txt")
+class ConfigExampleStage0:
+    def __init__(self, test_file_name: str):
+        self.test_file_name: str = test_file_name
 
-    def run_stage(self):
-        self._sample_write()
 
-    def _sample_write(self):
-        self.log_info("This is a Test. Write to " + self.test_artifact_path)
+class OutputExampleStage0:
+    def __init__(self, test_file_path: str):
+        self.test_file_path: str = test_file_path
 
-        with open(self.test_artifact_path, "w") as file:
+
+class ExampleStage0(Stage[InputExampleStage0, ConfigExampleStage0, OutputExampleStage0]):
+
+    @staticmethod
+    def _preview(context: Context, data: T_INPUT, config: T_CONFIG):
+        raise NotImplementedError()
+
+    @staticmethod
+    def _get_cached(context: Context, data: T_INPUT, config: T_CONFIG) -> T_OUTPUT:
+        return None
+
+    @staticmethod
+    def _process(context: Context, data: InputExampleStage0, config: ConfigExampleStage0) -> OutputExampleStage0:
+        f = context.get_file_path_out(config.test_file_name)
+
+        context.log_info("This is a Test. Write to " + f)
+
+        with open(f, "w") as file:
             file.write("Hello World! " + str(int(time.time())))
 
-        self.log_debug("Data path: " + self.get_file_path_data())
-        self.log_debug("Cache path: " + self.get_file_path_cache())
-        self.log_debug("Out path: " + self.get_file_path_out())
+        context.log_debug("Data path: " + context.get_file_path_data())
+        context.log_debug("Cache path: " + context.get_file_path_cache())
+        context.log_debug("Out path: " + context.get_file_path_out())
+
+        return OutputExampleStage0(
+            test_file_path=f
+        )
