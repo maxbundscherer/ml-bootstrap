@@ -15,7 +15,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
     def _preview(context: Context,
                  inp: T_INPUT,
                  conf: T_CONFIG):
-        raise NotImplementedError()
+        pass
 
     @staticmethod
     def _process(context: Context,
@@ -27,7 +27,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
     def _get_cached(context: Context,
                     inp: T_INPUT,
                     conf: T_CONFIG) -> T_OUTPUT:
-        raise NotImplementedError()
+        pass
 
     def __init__(self,
                  env: Environment,
@@ -73,7 +73,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
     def process(self) -> T_OUTPUT:
 
         self._context.log_space()
-        self._context.log_info("Started Stage " + self._stage_title)
+        self._context.log_info("Started Stage '" + self._stage_title + "'")
         self._context.stopwatch_start("St-" + self._stage_id)
 
         out: T_OUTPUT = self._get_cached(
@@ -94,7 +94,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
             self._context.log_debug("[Already cached]")
 
         o = self._context.stopwatch_stop("St-" + self._stage_id)
-        self._context.log_info("Stopped Stage " + self._stage_title + " [" + o + "]")
+        self._context.log_info("Stopped Stage '" + self._stage_title + "' [" + o + "]")
 
         return out
 

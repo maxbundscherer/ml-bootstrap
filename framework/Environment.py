@@ -58,7 +58,7 @@ class Environment:
         self._context: Context = context
 
     def start(self):
-        self._context.log_info("Started Environment " + self._env_title)
+        self._context.log_info("Started Environment '" + self._env_title + "'")
         self._context.stopwatch_start("Env-" + self._env_id)
 
         # self._context.log_debug("Data path: " + self._context.get_file_path_data())
@@ -68,7 +68,7 @@ class Environment:
     def stop(self):
         o = self._context.stopwatch_stop("Env-" + self._env_id)
         self._context.log_space()
-        self._context.log_info("Stopped Environment " + self._env_title + " [" + o + "]")
+        self._context.log_info("Stopped Environment '" + self._env_title + "' [" + o + "]")
 
     def get_context(self) -> Context:
         return self._context

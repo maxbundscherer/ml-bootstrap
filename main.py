@@ -49,7 +49,7 @@ def run_main():
         stage_title="Filter Data",
         stage_id="002_filter",
         inp=InputExampleStage1(
-            out_stage_0=stage_0_out
+            stage_0_out=stage_0_out
         ),
         stage_config=ConfigExampleStage1()
     )
