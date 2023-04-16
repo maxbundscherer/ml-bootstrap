@@ -37,8 +37,9 @@ class ExampleStage1(Stage[InputExampleStage1, ConfigExampleStage1, OutputExample
         with open(f, "r") as file:
             context.log_info("This is a Test Read from " + f + ": " + file.read())
 
-        context.log_debug("Data path: " + context.get_file_path_data())
-        context.log_debug("Cache path: " + context.get_file_path_cache())
-        context.log_debug("Out path: " + context.get_file_path_out())
+        context.log_debug("Debug message 123")
+        # context.log_debug("Data path: " + context.get_file_path_data())
+        # context.log_debug("Cache path: " + context.get_file_path_cache())
+        # context.log_debug("Out path: " + context.get_file_path_out())
 
         return OutputExampleStage1()

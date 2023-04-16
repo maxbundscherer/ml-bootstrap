@@ -39,9 +39,9 @@ class ExampleStage0(Stage[InputExampleStage0, ConfigExampleStage0, OutputExample
         with open(f, "w") as file:
             file.write("Hello World! " + str(int(time.time())))
 
-        context.log_debug("Data path: " + context.get_file_path_data())
-        context.log_debug("Cache path: " + context.get_file_path_cache())
-        context.log_debug("Out path: " + context.get_file_path_out())
+        # context.log_debug("Data path: " + context.get_file_path_data())
+        # context.log_debug("Cache path: " + context.get_file_path_cache())
+        # context.log_debug("Out path: " + context.get_file_path_out())
 
         return OutputExampleStage0(
             test_file_path=f
