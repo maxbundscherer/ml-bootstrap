@@ -34,31 +34,54 @@ class Context:
         if not path_config.file_path_cache.endswith("/"):
             raise ValueError("Cache File path must end with '/'")
 
-        if not os.path.exists(path_config.file_path_data):
-            self.log_warning("Create Data Folder '" + path_config.file_path_data + "'")
-            os.makedirs(path_config.file_path_data)
-
-        if not os.path.exists(path_config.file_path_out):
-            self.log_warning("Create Output Folder '" + path_config.file_path_out + "'")
-            os.makedirs(path_config.file_path_out)
-
-        if not os.path.exists(path_config.file_path_cache):
-            self.log_warning("Create Cache Folder '" + path_config.file_path_cache + "'")
-            os.makedirs(path_config.file_path_cache)
-
         self._path_config: PathConfig = path_config
+
+        self._is_created_data = False
+        self._is_created_out = False
+        self._is_created_cache = False
+
+        if path_config.create_on_demand is False:
+            # Create not on demand
+
+            self._create_path_data()
+            self._create_path_out()
+            self._create_path_cache()
 
         # Stopwatches
 
         self._stopwatches: dict = {}
 
+    def _create_path_data(self):
+        if not os.path.exists(self._path_config.file_path_data):
+            self.log_warning("Create Data Folder '" + self._path_config.file_path_data + "'")
+            os.makedirs(self._path_config.file_path_data)
+        self._is_created_data = True
+
+    def _create_path_out(self):
+        if not os.path.exists(self._path_config.file_path_out):
+            self.log_warning("Create Output Folder '" + self._path_config.file_path_out + "'")
+            os.makedirs(self._path_config.file_path_out)
+        self._is_created_out = True
+
+    def _create_path_cache(self):
+        if not os.path.exists(self._path_config.file_path_cache):
+            self.log_warning("Create Cache Folder '" + self._path_config.file_path_cache + "'")
+            os.makedirs(self._path_config.file_path_cache)
+        self._is_created_cache = True
+
     def get_file_path_data(self, file_path_sub: str = "") -> str:
+        if self._is_created_data is False:
+            self._create_path_data()
         return self._path_config.file_path_data + file_path_sub
 
     def get_file_path_out(self, file_path_sub: str = "") -> str:
+        if self._is_created_out is False:
+            self._create_path_out()
         return self._path_config.file_path_out + file_path_sub
 
     def get_file_path_cache(self, file_path_sub: str = "") -> str:
+        if self._is_created_cache is False:
+            self._create_path_cache()
         return self._path_config.file_path_cache + file_path_sub
 
     def _start_stopwatch(self, key: str):

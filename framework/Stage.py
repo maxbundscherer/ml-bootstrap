@@ -52,6 +52,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
             file_path_data=env.get_context().get_file_path_data(),
             file_path_out=env.get_context().get_file_path_out(stage_id + "/"),
             file_path_cache=env.get_context().get_file_path_cache(stage_id + "/"),
+            create_on_demand=True
         )
 
         # Context
