@@ -1,7 +1,6 @@
 from typing import TypeVar, Generic
 
-from framework.Config import PathConfig
-from framework.Context import Context
+from framework.Context import Context, PathConfig
 from framework.Environment import Environment
 
 T_INPUT = TypeVar('T_INPUT')

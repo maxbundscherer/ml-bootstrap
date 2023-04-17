@@ -1,8 +1,8 @@
 import logging
 import os
 
-from framework.Config import LoggingConfig, PathConfig
-from framework.Context import Context
+from framework.Config import LoggingConfig
+from framework.Context import Context, PathConfig
 
 
 class Environment:

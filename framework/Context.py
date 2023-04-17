@@ -3,7 +3,15 @@ import os
 import time
 from dataclasses import dataclass
 
-from framework.Config import PathConfig, LoggingConfig
+from framework.Config import LoggingConfig
+
+
+@dataclass
+class PathConfig:
+    file_path_data: str
+    file_path_out: str
+    file_path_cache: str
+    create_dir_on_demand: bool
 
 
 @dataclass
