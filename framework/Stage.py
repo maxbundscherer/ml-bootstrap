@@ -17,6 +17,12 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
         pass
 
     @staticmethod
+    def _get_cached(context: Context,
+                    inp: T_INPUT,
+                    conf: T_CONFIG) -> T_OUTPUT:
+        pass
+
+    @staticmethod
     def _process(context: Context,
                  inp: T_INPUT,
                  conf: T_CONFIG) -> T_OUTPUT:
@@ -26,12 +32,6 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
     def _after_process(context: Context,
                        out: T_OUTPUT,
                        conf: T_CONFIG):
-        pass
-
-    @staticmethod
-    def _get_cached(context: Context,
-                    inp: T_INPUT,
-                    conf: T_CONFIG) -> T_OUTPUT:
         pass
 
     def __init__(self,
