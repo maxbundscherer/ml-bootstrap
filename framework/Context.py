@@ -15,11 +15,11 @@ class PathConfig:
 
 
 @dataclass
-class ContextSummaryItem:
+class SummaryItem:
     message: str
 
 
-class ContextSummaryText(ContextSummaryItem):
+class SummaryText(SummaryItem):
     def __init__(self, message: str):
         super().__init__(message=message)
 
@@ -69,7 +69,7 @@ class Context:
 
         # Summary
 
-        self._summary: list[ContextSummaryItem] = []
+        self._summary: list[SummaryItem] = []
 
     def _create_path_data(self):
         if not os.path.exists(self._path_config.file_path_data):
@@ -151,7 +151,7 @@ class Context:
             if value is not None:
                 self.log_warning("[Stopwatch '" + key + "' is still running]")
 
-    def summary_add(self, item: ContextSummaryItem):
+    def summary_add(self, item: SummaryItem):
         self._summary.append(item)
 
     def summary_print(self):
