@@ -24,7 +24,7 @@ def run_main():
 
     env.start()
 
-    stage_1: ExampleStage001 = ExampleStage001(
+    stage_001: ExampleStage001 = ExampleStage001(
         env=env,
         stage_title="Preload Data",
         stage_id="001_preload",
@@ -34,21 +34,21 @@ def run_main():
         )
     )
 
-    stage_1.preview()
-    stage_1_out: OutputExampleStage001 = stage_1.process()
+    stage_001.preview()
+    stage_001_out: OutputExampleStage001 = stage_001.process()
 
-    stage_2: ExampleStage002 = ExampleStage002(
+    stage_002: ExampleStage002 = ExampleStage002(
         env=env,
         stage_title="Filter Data",
         stage_id="002_filter",
         inp=InputExampleStage002(
-            stage_1_out=stage_1_out
+            stage_001_out=stage_001_out
         ),
         stage_config=ConfigExampleStage002()
     )
 
-    # stage_2.preview()
-    stage_2.process()
+    # stage_002.preview()
+    stage_002.process()
 
     env.stop()
 

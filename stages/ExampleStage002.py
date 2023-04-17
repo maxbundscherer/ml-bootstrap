@@ -7,7 +7,7 @@ from stages.ExampleStage001 import OutputExampleStage001
 
 @dataclass
 class InputExampleStage002:
-    stage_1_out: OutputExampleStage001
+    stage_001_out: OutputExampleStage001
 
 
 @dataclass
@@ -32,7 +32,7 @@ class ExampleStage002(Stage[InputExampleStage002, ConfigExampleStage002, OutputE
 
     @staticmethod
     def _process(context: Context, inp: InputExampleStage002, conf: ConfigExampleStage002) -> OutputExampleStage002:
-        f = inp.stage_1_out.test_file_path
+        f = inp.stage_001_out.test_file_path
 
         with open(f, "r") as file:
             context.log_info("This is a Test Read from " + f + ": " + file.read())
