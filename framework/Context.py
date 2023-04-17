@@ -1,8 +1,19 @@
 import logging
 import os
 import time
+from dataclasses import dataclass
 
 from framework.Config import PathConfig, LoggingConfig
+
+
+@dataclass
+class ContextSummaryItem:
+    message: str
+
+
+class ContextSummaryText(ContextSummaryItem):
+    def __init__(self, message: str):
+        super().__init__(message=message)
 
 
 class Context:
@@ -48,10 +59,9 @@ class Context:
 
         self._stopwatches: dict = {}
 
-    def check_running_stopwatches(self):
-        for key, value in self._stopwatches.items():
-            if value is not None:
-                self.log_warning("[Stopwatch '" + key + "' is still running]")
+        # Summary
+
+        self._summary: list[ContextSummaryItem] = []
 
     def _create_path_data(self):
         if not os.path.exists(self._path_config.file_path_data):
@@ -127,3 +137,15 @@ class Context:
     @staticmethod
     def log_space():
         logging.info("")
+
+    def check_running_stopwatches(self):
+        for key, value in self._stopwatches.items():
+            if value is not None:
+                self.log_warning("[Stopwatch '" + key + "' is still running]")
+
+    def summary_add(self, item: ContextSummaryItem):
+        self._summary.append(item)
+
+    def summary_print(self):
+        for item in self._summary:
+            self.log_info("[Summary] '" + item.message + "']")

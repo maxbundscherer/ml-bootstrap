@@ -3,7 +3,7 @@ import time
 from dataclasses import dataclass
 
 from framework.Stage import Stage
-from framework.Context import Context
+from framework.Context import Context, ContextSummaryText
 
 
 @dataclass
@@ -56,3 +56,4 @@ class ExampleStage001(Stage[ExampleStage001Input, ExampleStage001Config, Example
     @staticmethod
     def _after_process(context: Context, out: ExampleStage001Output, conf: ExampleStage001Config):
         context.log_info("File written to " + out.test_file_path)
+        context.summary_add(ContextSummaryText(message="Test Summary"))

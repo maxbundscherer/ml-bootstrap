@@ -85,6 +85,9 @@ class Environment:
         for c in self._registered_contexts:
             c.check_running_stopwatches()
 
+        for c in self._registered_contexts:
+            c.summary_print()
+
     def register_context(self, context: Context):
         self._registered_contexts.append(context)
 
