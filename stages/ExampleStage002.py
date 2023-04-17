@@ -2,36 +2,36 @@ from dataclasses import dataclass
 
 from framework.Stage import Stage
 from framework.Context import Context
-from stages.ExampleStage001 import OutputExampleStage001
+from stages.ExampleStage001 import ExampleStage001Output
 
 
 @dataclass
-class InputExampleStage002:
-    stage_001_out: OutputExampleStage001
+class ExampleStage002Input:
+    stage_001_out: ExampleStage001Output
 
 
 @dataclass
-class ConfigExampleStage002:
+class ExampleStage002Config:
     pass
 
 
 @dataclass
-class OutputExampleStage002:
+class ExampleStage002Output:
     pass
 
 
-class ExampleStage002(Stage[InputExampleStage002, ConfigExampleStage002, OutputExampleStage002]):
+class ExampleStage002(Stage[ExampleStage002Input, ExampleStage002Config, ExampleStage002Output]):
 
     @staticmethod
-    def _preview(context: Context, inp: InputExampleStage002, conf: ConfigExampleStage002):
+    def _preview(context: Context, inp: ExampleStage002Input, conf: ExampleStage002Config):
         pass
 
     @staticmethod
-    def _get_cached(context: Context, inp: InputExampleStage002, conf: ConfigExampleStage002) -> OutputExampleStage002:
+    def _get_cached(context: Context, inp: ExampleStage002Input, conf: ExampleStage002Config) -> ExampleStage002Output:
         pass
 
     @staticmethod
-    def _process(context: Context, inp: InputExampleStage002, conf: ConfigExampleStage002) -> OutputExampleStage002:
+    def _process(context: Context, inp: ExampleStage002Input, conf: ExampleStage002Config) -> ExampleStage002Output:
         f = inp.stage_001_out.test_file_path
 
         with open(f, "r") as file:
@@ -42,4 +42,4 @@ class ExampleStage002(Stage[InputExampleStage002, ConfigExampleStage002, OutputE
         # context.log_debug("Cache path: " + context.get_file_path_cache())
         # context.log_debug("Out path: " + context.get_file_path_out())
 
-        return OutputExampleStage002()
+        return ExampleStage002Output()

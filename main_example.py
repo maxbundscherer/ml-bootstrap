@@ -3,8 +3,8 @@ import pathlib
 
 from framework.Config import LoggingConfig
 from framework.Environment import Environment
-from stages.ExampleStage001 import ExampleStage001, InputExampleStage001, ConfigExampleStage001, OutputExampleStage001
-from stages.ExampleStage002 import ExampleStage002, ConfigExampleStage002, InputExampleStage002
+from stages.ExampleStage001 import ExampleStage001, ExampleStage001Input, ExampleStage001Config, ExampleStage001Output
+from stages.ExampleStage002 import ExampleStage002, ExampleStage002Config, ExampleStage002Input
 
 
 def run_main():
@@ -28,23 +28,23 @@ def run_main():
         env=env,
         stage_title="Preload Data",
         stage_id="001_preload",
-        inp=InputExampleStage001(),
-        stage_config=ConfigExampleStage001(
+        inp=ExampleStage001Input(),
+        stage_config=ExampleStage001Config(
             test_file_name="test.txt"
         )
     )
 
     stage_001.preview()
-    stage_001_out: OutputExampleStage001 = stage_001.process()
+    stage_001_out: ExampleStage001Output = stage_001.process()
 
     stage_002: ExampleStage002 = ExampleStage002(
         env=env,
         stage_title="Filter Data",
         stage_id="002_filter",
-        inp=InputExampleStage002(
+        inp=ExampleStage002Input(
             stage_001_out=stage_001_out
         ),
-        stage_config=ConfigExampleStage002()
+        stage_config=ExampleStage002Config()
     )
 
     # stage_002.preview()
