@@ -30,7 +30,7 @@ tbd tbd tbd
 
 ## TODOS
 
-- [ ] tbd
+- [ ] Add `git@github.com:maxbundscherer/ml-bootstrap.git` to git-remotes (get updates from bootstrap)
 - [ ] tbd
 - [ ] tbd
 - [ ] tbd 
