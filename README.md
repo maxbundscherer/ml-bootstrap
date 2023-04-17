@@ -14,15 +14,16 @@ tbd tbd tbd
 
 ## Let's get started
 
-### Install Requirements
+### Install
 
 - `pip install -r requirements.txt`
+- Create workdir `mkdir workdir`
 
 ### Run
 
 - `python main_example.py`
 
-### Create and modify your own stuff
+### Own project
 
 - Add `main.py` to your project
 - Add `Stages` to `stages/`
