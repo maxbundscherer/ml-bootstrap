@@ -81,6 +81,7 @@ class Environment:
         o = self._context.stopwatch_stop("Env-" + self._env_id)
         self._context.log_space()
         self._context.log_info("[Stopped Environment '" + self._env_title + "' (" + o + ")]")
+        self._context.log_space()
 
         for c in self._registered_contexts:
             c.check_running_stopwatches()
