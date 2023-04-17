@@ -1,3 +1,4 @@
+import logging
 import os
 
 from framework.Config import LoggingConfig, PathConfig
@@ -13,6 +14,11 @@ class Environment:
                  env_title: str = "Local",
                  env_id: str = "001_local",
                  ):
+
+        # Logging
+        
+        logging.basicConfig(level=logging_config.level,
+                            format='%(levelname)-8s - %(message)s')  # Default was '%(name)s - %(levelname)-8s - %(message)s'
 
         # Check local path and env_id
 

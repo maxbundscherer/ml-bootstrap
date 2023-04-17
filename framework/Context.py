@@ -15,9 +15,6 @@ class Context:
 
         # Logging
 
-        logging.basicConfig(level=logging_config.level,
-                            format='%(levelname)-8s - %(message)s')  # Default was '%(name)s - %(levelname)-8s - %(message)s'
-
         if logging_config.hide_prefix:
             self._logging_prefix = ""
         else:
