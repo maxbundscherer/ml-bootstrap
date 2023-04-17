@@ -14,8 +14,10 @@ tbd tbd tbd
 
 ## Let's get started
 
-### Install
+### Install (with Conda)
 
+- `conda create --name py311tbd python=3.11`
+- `conda activate py311tbd`
 - `pip install -r requirements.txt`
 
 ### Run
