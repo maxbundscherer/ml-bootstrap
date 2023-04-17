@@ -46,7 +46,7 @@ class Environment:
                 file_path_data=file_path_data,
                 file_path_out=file_path_local + env_id + "/out/",
                 file_path_cache=file_path_local + env_id + "/cache/",
-                create_on_demand=False
+                create_dir_on_demand=False
             ),
             logging_prefix="Env-" + env_id,
             logging_config=logging_config

@@ -40,7 +40,7 @@ class Context:
         self._is_created_out = False
         self._is_created_cache = False
 
-        if path_config.create_on_demand is False:
+        if path_config.create_dir_on_demand is False:
             # Create not on demand
 
             self._create_path_data()
