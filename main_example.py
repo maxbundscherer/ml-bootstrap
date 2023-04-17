@@ -34,7 +34,6 @@ def run_main():
             test_file_name="test.txt"
         )
     )
-
     stage_001.preview()
     stage_001_out: ExampleStage001Output = stage_001.process()
 
@@ -48,7 +47,6 @@ def run_main():
         ),
         stage_config=ExampleStage002Config()
     )
-
     # stage_002.preview()
     stage_002.process()
 
