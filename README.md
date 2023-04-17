@@ -17,7 +17,6 @@ tbd tbd tbd
 ### Install
 
 - `pip install -r requirements.txt`
-- Create workdir `mkdir workdir`
 
 ### Run
 
