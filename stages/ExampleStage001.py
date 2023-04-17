@@ -1,3 +1,4 @@
+import os
 import time
 from dataclasses import dataclass
 
@@ -28,7 +29,12 @@ class ExampleStage001(Stage[InputExampleStage001, ConfigExampleStage001, OutputE
 
     @staticmethod
     def _get_cached(context: Context, inp: InputExampleStage001, conf: ConfigExampleStage001) -> OutputExampleStage001:
-        pass
+        f = context.get_file_path_out(conf.test_file_name)
+
+        if os.path.exists(f):
+            return OutputExampleStage001(
+                test_file_path=f
+            )
 
     @staticmethod
     def _process(context: Context, inp: InputExampleStage001, conf: ConfigExampleStage001) -> OutputExampleStage001:
