@@ -52,3 +52,7 @@ class ExampleStage001(Stage[ExampleStage001Input, ExampleStage001Config, Example
         return ExampleStage001Output(
             test_file_path=f
         )
+
+    @staticmethod
+    def _after_process(context: Context, out: ExampleStage001Output, conf: ExampleStage001Config):
+        context.log_info("File written to " + out.test_file_path)

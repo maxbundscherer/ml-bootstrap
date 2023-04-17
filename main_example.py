@@ -9,7 +9,7 @@ from stages.ExampleStage002 import ExampleStage002, ExampleStage002Config, Examp
 
 def run_main():
     file_path_local = str(pathlib.Path().resolve()) + "/workdir/"  # Get current working directory
-    # file_path_local = "/Users/maximilianbundscherer/Desktop/test/"  # Set path manually
+    # file_path_local = "/Users/testuser/Desktop/test/"  # Set path manually
 
     env: Environment = Environment(
         file_path_local=file_path_local,

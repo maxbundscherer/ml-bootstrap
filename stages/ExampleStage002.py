@@ -43,3 +43,7 @@ class ExampleStage002(Stage[ExampleStage002Input, ExampleStage002Config, Example
         # context.log_debug("Out path: " + context.get_file_path_out())
 
         return ExampleStage002Output()
+
+    @staticmethod
+    def _after_process(context: Context, out: ExampleStage001Output, conf: ExampleStage002Config):
+        context.log_info("Done")
