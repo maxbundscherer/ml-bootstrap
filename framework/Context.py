@@ -53,19 +53,19 @@ class Context:
 
     def _create_path_data(self):
         if not os.path.exists(self._path_config.file_path_data):
-            self.log_debug("Create Data Folder '" + self._path_config.file_path_data + "'")
+            self.log_debug("[Create Data Folder '" + self._path_config.file_path_data + "']")
             os.makedirs(self._path_config.file_path_data)
         self._is_created_data = True
 
     def _create_path_out(self):
         if not os.path.exists(self._path_config.file_path_out):
-            self.log_debug("Create Output Folder '" + self._path_config.file_path_out + "'")
+            self.log_debug("[Create Output Folder '" + self._path_config.file_path_out + "']")
             os.makedirs(self._path_config.file_path_out)
         self._is_created_out = True
 
     def _create_path_cache(self):
         if not os.path.exists(self._path_config.file_path_cache):
-            self.log_debug("Create Cache Folder '" + self._path_config.file_path_cache + "'")
+            self.log_debug("[Create Cache Folder '" + self._path_config.file_path_cache + "']")
             os.makedirs(self._path_config.file_path_cache)
         self._is_created_cache = True
 
