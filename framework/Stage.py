@@ -40,6 +40,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
                  stage_config: T_CONFIG,
                  stage_title: str = "Preload Data",
                  stage_id: str = "001_preload",
+                 ignore_cache: bool = False
                  ):
 
         # Check stage_id and stage_title
@@ -74,6 +75,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
         self._stage_id: str = stage_id
         self._context: Context = context
         self._conf: T_CONFIG = stage_config
+        self._ignore_cache: bool = ignore_cache
 
         env.register_context(context)
 
@@ -83,11 +85,16 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
         self._context.log_info("[Started Stage '" + self._stage_title + "']")
         self._context.stopwatch_start("St-" + self._stage_id)
 
-        out: T_OUTPUT = self._get_cached(
-            context=self._context,
-            inp=self._inp,
-            conf=self._conf
-        )
+        out: T_OUTPUT = None
+
+        if not self._ignore_cache:
+            out: T_OUTPUT = self._get_cached(
+                context=self._context,
+                inp=self._inp,
+                conf=self._conf
+            )
+        else:
+            self._context.log_debug("[Cache ignored]")
 
         if out is None:
             # Cache miss

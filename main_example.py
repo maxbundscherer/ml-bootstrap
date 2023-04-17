@@ -28,6 +28,7 @@ def run_main():
         env=env,
         stage_title="Preload Data",
         stage_id="001_preload",
+        ignore_cache=False,
         inp=ExampleStage001Input(),
         stage_config=ExampleStage001Config(
             test_file_name="test.txt"
@@ -41,6 +42,7 @@ def run_main():
         env=env,
         stage_title="Filter Data",
         stage_id="002_filter",
+        ignore_cache=False,
         inp=ExampleStage002Input(
             stage_001_out=stage_001_out
         ),
