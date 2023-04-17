@@ -25,7 +25,7 @@ class ExampleStage001(Stage[InputExampleStage001, ConfigExampleStage001, OutputE
 
     @staticmethod
     def _preview(context: Context, inp: InputExampleStage001, conf: ConfigExampleStage001):
-        pass
+        context.log_info("Got name '" + conf.test_file_name + "'")
 
     @staticmethod
     def _get_cached(context: Context, inp: InputExampleStage001, conf: ConfigExampleStage001) -> OutputExampleStage001:

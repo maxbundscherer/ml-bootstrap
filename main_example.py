@@ -34,7 +34,7 @@ def run_main():
         )
     )
 
-    # stage_1.preview()
+    stage_1.preview()
     stage_1_out: OutputExampleStage001 = stage_1.process()
 
     stage_2: ExampleStage002 = ExampleStage002(
