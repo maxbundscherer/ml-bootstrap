@@ -20,7 +20,13 @@ tbd tbd tbd
 
 ### Run
 
-- `python main.py`
+- `python main_example.py`
+
+### Create and modify your own stuff
+
+- Add `main.py` to your project
+- Add `Stages` to `stages/`
+- Run `python main.py`
 
 ## TODOS
 
