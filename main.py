@@ -1,9 +1,9 @@
 import logging
 
 from framework.Config import LoggingConfig
-from stages.ExampleStage0 import ExampleStage0, InputExampleStage0, ConfigExampleStage0, OutputExampleStage0
-from stages.ExampleStage1 import ExampleStage1, InputExampleStage1, ConfigExampleStage1
 from framework.Environment import Environment
+from stages.ExampleStage001 import ExampleStage001, InputExampleStage001, ConfigExampleStage001, OutputExampleStage001
+from stages.ExampleStage002 import ExampleStage002, ConfigExampleStage002, InputExampleStage002
 
 
 def run_main():
@@ -23,24 +23,24 @@ def run_main():
 
     env.start()
 
-    stage_0: ExampleStage0 = ExampleStage0(
+    stage_0: ExampleStage001 = ExampleStage001(
         env=env,
         logging_config=LoggingConfig(
-            level=logging.DEBUG,
-            hide_prefix=False
+            level=logging.ERROR,
+            hide_prefix=True
         ),
         stage_title="Preload Data",
         stage_id="001_preload",
-        inp=InputExampleStage0(),
-        stage_config=ConfigExampleStage0(
+        inp=InputExampleStage001(),
+        stage_config=ConfigExampleStage001(
             test_file_name="test.txt"
         )
     )
 
     # stage_0.preview()
-    stage_0_out: OutputExampleStage0 = stage_0.process()
+    stage_1_out: OutputExampleStage001 = stage_0.process()
 
-    stage_1: ExampleStage1 = ExampleStage1(
+    stage_1: ExampleStage002 = ExampleStage002(
         env=env,
         logging_config=LoggingConfig(
             level=logging.DEBUG,
@@ -48,10 +48,10 @@ def run_main():
         ),
         stage_title="Filter Data",
         stage_id="002_filter",
-        inp=InputExampleStage1(
-            stage_0_out=stage_0_out
+        inp=InputExampleStage002(
+            stage_1_out=stage_1_out
         ),
-        stage_config=ConfigExampleStage1()
+        stage_config=ConfigExampleStage002()
     )
 
     # stage_1.preview()

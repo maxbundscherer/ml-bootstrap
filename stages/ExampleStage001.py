@@ -6,32 +6,32 @@ from framework.Context import Context
 
 
 @dataclass
-class InputExampleStage0:
+class InputExampleStage001:
     pass
 
 
 @dataclass
-class ConfigExampleStage0:
+class ConfigExampleStage001:
     test_file_name: str
 
 
 @dataclass
-class OutputExampleStage0:
+class OutputExampleStage001:
     test_file_path: str
 
 
-class ExampleStage0(Stage[InputExampleStage0, ConfigExampleStage0, OutputExampleStage0]):
+class ExampleStage001(Stage[InputExampleStage001, ConfigExampleStage001, OutputExampleStage001]):
 
     @staticmethod
-    def _preview(context: Context, inp: InputExampleStage0, conf: ConfigExampleStage0):
+    def _preview(context: Context, inp: InputExampleStage001, conf: ConfigExampleStage001):
         pass
 
     @staticmethod
-    def _get_cached(context: Context, inp: InputExampleStage0, conf: ConfigExampleStage0) -> OutputExampleStage0:
+    def _get_cached(context: Context, inp: InputExampleStage001, conf: ConfigExampleStage001) -> OutputExampleStage001:
         pass
 
     @staticmethod
-    def _process(context: Context, inp: InputExampleStage0, conf: ConfigExampleStage0) -> OutputExampleStage0:
+    def _process(context: Context, inp: InputExampleStage001, conf: ConfigExampleStage001) -> OutputExampleStage001:
         f = context.get_file_path_out(conf.test_file_name)
 
         context.log_info("This is a Test. Write to " + f)
@@ -43,6 +43,6 @@ class ExampleStage0(Stage[InputExampleStage0, ConfigExampleStage0, OutputExample
         # context.log_debug("Cache path: " + context.get_file_path_cache())
         # context.log_debug("Out path: " + context.get_file_path_out())
 
-        return OutputExampleStage0(
+        return OutputExampleStage001(
             test_file_path=f
         )
