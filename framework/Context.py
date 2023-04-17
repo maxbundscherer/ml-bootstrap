@@ -51,6 +51,11 @@ class Context:
 
         self._stopwatches: dict = {}
 
+    def check_running_stopwatches(self):
+        for key, value in self._stopwatches.items():
+            if value is not None:
+                self.log_warning("[Stopwatch '" + key + "' is still running]")
+
     def _create_path_data(self):
         if not os.path.exists(self._path_config.file_path_data):
             self.log_debug("[Create Data Folder '" + self._path_config.file_path_data + "']")

@@ -59,6 +59,10 @@ class Environment:
         self._context: Context = context
         self._logging_config: LoggingConfig = logging_config
 
+        # Context
+        self._registered_contexts: list[Context] = []
+        self.register_context(context)
+
     def start(self):
         self._context.log_info("[Started Environment '" + self._env_title + "']")
         self._context.stopwatch_start("Env-" + self._env_id)
@@ -69,8 +73,13 @@ class Environment:
 
     def stop(self):
         o = self._context.stopwatch_stop("Env-" + self._env_id)
+        for c in self._registered_contexts:
+            c.check_running_stopwatches()
         self._context.log_space()
         self._context.log_info("[Stopped Environment '" + self._env_title + "' (" + o + ")]")
+
+    def register_context(self, context: Context):
+        self._registered_contexts.append(context)
 
     def get_context(self) -> Context:
         return self._context

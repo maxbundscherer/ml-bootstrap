@@ -24,6 +24,12 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
         raise NotImplementedError()
 
     @staticmethod
+    def _after_process(context: Context,
+                       out: T_OUTPUT,
+                       conf: T_CONFIG):
+        pass
+
+    @staticmethod
     def _get_cached(context: Context,
                     inp: T_INPUT,
                     conf: T_CONFIG) -> T_OUTPUT:
@@ -70,6 +76,8 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
         self._context: Context = context
         self._conf: T_CONFIG = stage_config
 
+        env.register_context(context)
+
     def process(self) -> T_OUTPUT:
         self._context.log_space()
 
@@ -92,6 +100,12 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
         else:
             # Cache hit
             self._context.log_debug("[Already cached]")
+
+        self._after_process(
+            context=self._context,
+            out=out,
+            conf=self._conf
+        )
 
         o = self._context.stopwatch_stop("St-" + self._stage_id)
         self._context.log_info("[Stopped Stage '" + self._stage_title + "' (" + o + ")]")
