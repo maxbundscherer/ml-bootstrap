@@ -1,6 +1,6 @@
 from typing import TypeVar, Generic
 
-from framework.Config import PathConfig, LoggingConfig
+from framework.Config import PathConfig
 from framework.Context import Context
 from framework.Environment import Environment
 
@@ -31,7 +31,6 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
 
     def __init__(self,
                  env: Environment,
-                 logging_config: LoggingConfig,
                  inp: T_INPUT,
                  stage_config: T_CONFIG,
                  stage_title: str = "Preload Data",
@@ -60,7 +59,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
         context = Context(
             path_config=path_config,
             logging_prefix="St-" + stage_id,
-            logging_config=logging_config
+            logging_config=env.get_logging_config()
         )
 
         # Set attributes
