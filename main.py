@@ -23,7 +23,7 @@ def run_main():
 
     env.start()
 
-    stage_0: ExampleStage001 = ExampleStage001(
+    stage_1: ExampleStage001 = ExampleStage001(
         env=env,
         logging_config=LoggingConfig(
             level=logging.ERROR,
@@ -37,10 +37,10 @@ def run_main():
         )
     )
 
-    # stage_0.preview()
-    stage_1_out: OutputExampleStage001 = stage_0.process()
+    # stage_1.preview()
+    stage_1_out: OutputExampleStage001 = stage_1.process()
 
-    stage_1: ExampleStage002 = ExampleStage002(
+    stage_2: ExampleStage002 = ExampleStage002(
         env=env,
         logging_config=LoggingConfig(
             level=logging.DEBUG,
@@ -54,8 +54,8 @@ def run_main():
         stage_config=ConfigExampleStage002()
     )
 
-    # stage_1.preview()
-    stage_1.process()
+    # stage_2.preview()
+    stage_2.process()
 
     env.stop()
 
