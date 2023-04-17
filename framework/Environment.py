@@ -16,7 +16,7 @@ class Environment:
                  ):
 
         # Logging
-        
+
         logging.basicConfig(level=logging_config.level,
                             format='%(levelname)-8s - %(message)s')  # Default was '%(name)s - %(levelname)-8s - %(message)s'
 
@@ -79,10 +79,11 @@ class Environment:
 
     def stop(self):
         o = self._context.stopwatch_stop("Env-" + self._env_id)
-        for c in self._registered_contexts:
-            c.check_running_stopwatches()
         self._context.log_space()
         self._context.log_info("[Stopped Environment '" + self._env_title + "' (" + o + ")]")
+
+        for c in self._registered_contexts:
+            c.check_running_stopwatches()
 
     def register_context(self, context: Context):
         self._registered_contexts.append(context)
