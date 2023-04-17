@@ -57,6 +57,7 @@ class Environment:
         self._env_title: str = env_title
         self._env_id: str = env_id
         self._context: Context = context
+        self._logging_config: LoggingConfig = logging_config
 
     def start(self):
         self._context.log_info("Started Environment '" + self._env_title + "'")
@@ -73,3 +74,6 @@ class Environment:
 
     def get_context(self) -> Context:
         return self._context
+
+    def get_logging_config(self) -> LoggingConfig:
+        return self._logging_config
