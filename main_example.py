@@ -1,4 +1,5 @@
 import logging
+import pathlib
 
 from framework.Config import LoggingConfig
 from framework.Environment import Environment
@@ -7,8 +8,8 @@ from stages.ExampleStage002 import ExampleStage002, ConfigExampleStage002, Input
 
 
 def run_main():
-    # file_path_local = str(pathlib.Path().resolve()) + "/test/"  # Get current working directory
-    file_path_local = "/Users/maximilianbundscherer/Desktop/test/"  # Set path manually
+    file_path_local = str(pathlib.Path().resolve()) + "/workdir/"  # Get current working directory
+    # file_path_local = "/Users/maximilianbundscherer/Desktop/test/"  # Set path manually
 
     env: Environment = Environment(
         file_path_local=file_path_local,
@@ -25,10 +26,6 @@ def run_main():
 
     stage_1: ExampleStage001 = ExampleStage001(
         env=env,
-        logging_config=LoggingConfig(
-            level=logging.ERROR,
-            hide_prefix=True
-        ),
         stage_title="Preload Data",
         stage_id="001_preload",
         inp=InputExampleStage001(),
@@ -42,10 +39,6 @@ def run_main():
 
     stage_2: ExampleStage002 = ExampleStage002(
         env=env,
-        logging_config=LoggingConfig(
-            level=logging.DEBUG,
-            hide_prefix=False
-        ),
         stage_title="Filter Data",
         stage_id="002_filter",
         inp=InputExampleStage002(
