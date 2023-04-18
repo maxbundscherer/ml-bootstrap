@@ -1,8 +1,8 @@
-# ml-tbd
+# ml-bootstrap
 
-tbd tbd tbd tbd tbd tbd tbd tbd tbd
+A simple machine-learning/data-science python framework.
 
-``tbd - tbd``
+``data science - machine learning - python - framework``
 
 [![shields.io](https://img.shields.io/badge/license-Apache2-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
@@ -10,7 +10,7 @@ Maintainer: [Maximilian Bundscherer](https://bundscherer-online.de)
 
 ## Overview
 
-tbd tbd tbd
+This repo is helping me to structure my machine learning projects in an efficient way.
 
 ## Let's get started
 
