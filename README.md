@@ -28,7 +28,7 @@ tbd tbd tbd
 ### Own project
 
 - Add `main.py` to your project (use `main_example.py` as template)
-- Add Stages to `stages/` (see Stages in `stages/example.py`)
+- Add Stages to `stages/` (see Stages in `stages/` and see [doc](framework/Stage.py))
 - Run `python main.py`
 
 ## TODOS
