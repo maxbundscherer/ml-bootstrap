@@ -1,8 +1,8 @@
 # ml-bootstrap
 
-A simple machine-learning/data-science python framework.
+A simple ml/data-science python framework.
 
-``data science - machine learning - python - framework``
+``machine learning - data science - python - framework``
 
 [![shields.io](https://img.shields.io/badge/license-Apache2-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
