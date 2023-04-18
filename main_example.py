@@ -36,7 +36,7 @@ def run_main():
             test_message="Hello"
         ),
         stage_config=ExampleStage001Config(
-            test_message_suffix=" World"
+            test_message_suffix=" World!!"
         )
     )
     stage_001.preview()
