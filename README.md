@@ -1,4 +1,4 @@
-# tbd
+# ml-tbd
 
 tbd tbd tbd tbd tbd tbd tbd tbd tbd
 
@@ -14,31 +14,31 @@ tbd tbd tbd
 
 ## Let's get started
 
-### Install (with Conda)
+### Install (with Conda) and first run
 
 - `conda create --name py311tbd python=3.11`
 - `conda activate py311tbd`
 - `pip install -r requirements.txt` (install requirements)
 - `pip freeze > requirements.txt` (export requirements)
-
-### Run
-
 - `python main_example.py`
 
-### Own project
+### Add your own project
 
+- Read doc below
 - Add `main.py` to your project (use `main_example.py` as template)
-- Add Stages to `stages/` (see Stages in `stages/` and see [doc](framework/Stage.py))
+- Add Stages to `stages/` (see [ExampleStages](stages/) and read [doc](framework/Stage.py))
 - Run `python main.py`
 
-## TODOS
+## Todo
 
-- [ ] Add `git@github.com:maxbundscherer/ml-bootstrap.git` to git-remotes (get updates from bootstrap)
+- [ ] tbd
 - [ ] tbd
 - [ ] tbd
 - [ ] tbd
 
 ## Framework documentation
+
+Add `git@github.com:maxbundscherer/ml-bootstrap.git` to git-remotes (get updates from bootstrap)
 
 ### Logging
 
