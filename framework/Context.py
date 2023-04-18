@@ -113,6 +113,15 @@ class Context:
             self._create_path_cache()
         return self._path_config.file_path_cache + file_path_sub
 
+    def list_files_data(self) -> list[str]:
+        return os.listdir(self.get_file_path_data())
+
+    def list_files_out(self) -> list[str]:
+        return os.listdir(self.get_file_path_out())
+
+    def list_files_cache(self) -> list[str]:
+        return os.listdir(self.get_file_path_cache())
+
     def _start_stopwatch(self, key: str):
         if key in self._stopwatches:
             raise ValueError("Stopwatch with key '" + key + "' already exists")
