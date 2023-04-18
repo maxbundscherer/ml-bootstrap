@@ -35,7 +35,7 @@ class ExampleStage002(Stage[ExampleStage002Input, ExampleStage002Config, Example
         f = inp.stage_001_out.test_file_path
         m = ""
         with open(f, "r") as file:
-            file.read()
+            m = file.read()
             context.log_info("This is a Test Read from " + f + ": " + m)
 
         context.log_debug("Debug message 123")
