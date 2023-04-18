@@ -29,13 +29,6 @@ This repo is helping me to structure my machine learning projects in an efficien
 - Add Stages to `stages/` (see [ExampleStages](stages/) and read [doc](framework/Stage.py))
 - Run `python main.py`
 
-## Todo
-
-- [ ] tbd
-- [ ] tbd
-- [ ] tbd
-- [ ] tbd
-
 ## Framework documentation
 
 Add `git@github.com:maxbundscherer/ml-bootstrap.git` to git-remotes (get updates from bootstrap)
