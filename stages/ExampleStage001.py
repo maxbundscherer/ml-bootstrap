@@ -29,7 +29,7 @@ class ExampleStage001(Stage[ExampleStage001Input, ExampleStage001Config, Example
 
     @staticmethod
     def _get_cached(context: Context, inp: ExampleStage001Input, conf: ExampleStage001Config) -> ExampleStage001Output:
-        f = context.get_file_path_out(conf.test_file_name)
+        f = context.get_file_path_cache(conf.test_file_name)
 
         if os.path.exists(f):
             return ExampleStage001Output(
@@ -38,7 +38,7 @@ class ExampleStage001(Stage[ExampleStage001Input, ExampleStage001Config, Example
 
     @staticmethod
     def _process(context: Context, inp: ExampleStage001Input, conf: ExampleStage001Config) -> ExampleStage001Output:
-        f = context.get_file_path_out(conf.test_file_name)
+        f = context.get_file_path_cache(conf.test_file_name)
 
         context.log_info("This is a Test. Write to " + f)
 

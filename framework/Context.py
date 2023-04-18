@@ -1,5 +1,6 @@
 import logging
 import os
+import shutil
 import time
 from dataclasses import dataclass
 
@@ -53,7 +54,9 @@ class Context:
 
         if path_config.flush_cache_dir:
             if os.path.exists(path_config.file_path_cache):
-                os.remove(path_config.file_path_cache)
+                # os.removedirs() # Complicated (must be empty)
+                shutil.rmtree(path_config.file_path_cache)
+                self.log_space()
                 self.log_debug("[Flush Cache Folder '" + path_config.file_path_cache + "']")
 
         self._path_config: PathConfig = path_config
