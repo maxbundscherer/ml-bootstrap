@@ -36,4 +36,22 @@ tbd tbd tbd
 - [ ] Add `git@github.com:maxbundscherer/ml-bootstrap.git` to git-remotes (get updates from bootstrap)
 - [ ] tbd
 - [ ] tbd
-- [ ] tbd 
+- [ ] tbd
+
+## Framework documentation
+
+### Logging
+
+- Use `context.log_*()` instead of `print` to log messages
+- Use `context.log_space()` to log a new line
+
+### Paths
+
+- Use `context.get_file_path_data()` to get the path to the data directory (input data)
+- Use `context.get_file_path_cache()` to get the path to the cache directory (for framework!)
+- Use `context.get_file_path_out()` to get the path to the output directory (for humans!)
+
+### Utils
+
+- Use `context.start_stopwatch()` and `context.stop_stopwatch()` to measure time
+- Use `context.summary_add(*)` to add a summary entry (logged at the end of the environment)
