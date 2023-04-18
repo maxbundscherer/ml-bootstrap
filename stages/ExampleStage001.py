@@ -23,7 +23,7 @@ class ExampleStage001Output:
 class ExampleStage001(Stage[ExampleStage001Input, ExampleStage001Config, ExampleStage001Output]):
 
     @staticmethod
-    def _preview(context: Context, inp: ExampleStage001Input, conf: ExampleStage001Config):
+    def _preview(context: Context, inp: ExampleStage001Input, conf: ExampleStage001Config) -> None:
         context.log_debug("Should append '" + inp.test_message + "' with '" + conf.test_message_suffix + "'")
 
     @staticmethod
@@ -50,10 +50,10 @@ class ExampleStage001(Stage[ExampleStage001Input, ExampleStage001Config, Example
         )
 
     @staticmethod
-    def _write_cache(context: Context, out: ExampleStage001Output, conf: ExampleStage001Config):
+    def _write_cache(context: Context, out: ExampleStage001Output, conf: ExampleStage001Config) -> None:
         FileCacheHelper(context=context, file_name="testfile.txt").write_cache(out.message)
 
     @staticmethod
-    def _after_process(context: Context, out: ExampleStage001Output, conf: ExampleStage001Config):
+    def _after_process(context: Context, out: ExampleStage001Output, conf: ExampleStage001Config) -> None:
         context.log_debug("Got content '" + out.message + "'")
         context.summary_add(SummaryText(message="My content is '" + out.message + "'"))

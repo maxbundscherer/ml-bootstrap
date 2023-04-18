@@ -23,7 +23,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
     @staticmethod
     def _preview(context: Context,
                  inp: T_INPUT,
-                 conf: T_CONFIG):
+                 conf: T_CONFIG) -> None:
         pass
 
     @staticmethod
@@ -41,13 +41,13 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
     @staticmethod
     def _write_cache(context: Context,
                      out: T_OUTPUT,
-                     conf: T_CONFIG):
+                     conf: T_CONFIG) -> None:
         pass
 
     @staticmethod
     def _after_process(context: Context,
                        out: T_OUTPUT,
-                       conf: T_CONFIG):
+                       conf: T_CONFIG) -> None:
         pass
 
     def __init__(self,

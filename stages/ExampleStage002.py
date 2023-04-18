@@ -36,6 +36,6 @@ class ExampleStage002(Stage[ExampleStage002Input, ExampleStage002Config, Example
         return ExampleStage002Output(test_message=content)
 
     @staticmethod
-    def _after_process(context: Context, out: ExampleStage002Output, conf: ExampleStage002Config):
+    def _after_process(context: Context, out: ExampleStage002Output, conf: ExampleStage002Config) -> None:
         context.log_debug("Got final message '" + out.test_message + "'")
         context.summary_add(SummaryText(message="My content is '" + out.test_message + "'"))
