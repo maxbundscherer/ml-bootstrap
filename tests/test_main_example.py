@@ -10,7 +10,7 @@ from stages.ExampleStage002 import ExampleStage002, ExampleStage002Input, Exampl
 
 class TestMainExample(TestCase):
     def test_run_main(self):
-        file_path_local = str(pathlib.Path().resolve()).replace("/tests", "/") + "/workdir/"
+        file_path_local = str(pathlib.Path().resolve()).replace("/tests", "/") + "workdir/"
 
         env: Environment = Environment(
             file_path_local=file_path_local,
