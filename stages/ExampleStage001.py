@@ -1,5 +1,4 @@
 import os
-import time
 from dataclasses import dataclass
 
 from framework.Stage import Stage
@@ -43,7 +42,7 @@ class ExampleStage001(Stage[ExampleStage001Input, ExampleStage001Config, Example
         context.log_info("This is a Test. Write to " + f)
 
         with open(f, "w") as file:
-            file.write("Hello World! " + str(int(time.time())))
+            file.write("Hello World!")
 
         # context.log_debug("Data path: " + context.get_file_path_data())
         # context.log_debug("Cache path: " + context.get_file_path_cache())

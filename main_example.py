@@ -8,6 +8,7 @@ from stages.ExampleStage002 import ExampleStage002, ExampleStage002Config, Examp
 
 
 def run_main():
+    # Please don't forget update the test in tests/test_main_example.py
     file_path_local = str(pathlib.Path().resolve()) + "/workdir/"  # Get current working directory
     # file_path_local = "/Users/testuser/Desktop/test/"  # Set path manually
 
