@@ -42,9 +42,8 @@ Add `git@github.com:maxbundscherer/ml-bootstrap.git` to git-remotes (get updates
 ### Paths
 
 - Use `context.get_file_path_data()` to get the path to the data directory (input data)
-- Use `context.get_file_path_cache()` to get the path to the cache directory (for framework!)
-- Use `context.get_file_path_out()` to get the path to the output directory (for humans!)
-
+- Use `context.get_file_path_cache()` to get the path to the cache directory (**for framework!**)
+- Use `context.get_file_path_out()` to get the path to the output directory (**for humans!**)
 - Use `context.list_files_*()` to list all files in the * directory
 
 ### Utils
