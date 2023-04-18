@@ -32,7 +32,7 @@ This repo is helping me to structure my machine learning projects in an efficien
 
 ## Framework documentation
 
-Add `git@github.com:maxbundscherer/ml-bootstrap.git` to git remotes (get updates from bootstrap)
+Add `git@github.com:maxbundscherer/ml-bootstrap.git` to git-remotes (get updates from bootstrap repo)
 
 ### Logging
 
