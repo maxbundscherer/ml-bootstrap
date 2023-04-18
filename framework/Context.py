@@ -11,6 +11,7 @@ class PathConfig:
     file_path_data: str
     file_path_out: str
     file_path_cache: str
+    flush_cache_dir: bool
     create_dir_on_demand: bool
 
 
@@ -49,6 +50,11 @@ class Context:
 
         if not path_config.file_path_cache.endswith("/"):
             raise ValueError("Cache File path must end with '/'")
+
+        if path_config.flush_cache_dir:
+            if os.path.exists(path_config.file_path_cache):
+                os.remove(path_config.file_path_cache)
+                self.log_debug("[Flush Cache Folder '" + path_config.file_path_cache + "']")
 
         self._path_config: PathConfig = path_config
 

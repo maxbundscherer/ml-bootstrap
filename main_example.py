@@ -14,6 +14,7 @@ def run_main():
     env: Environment = Environment(
         file_path_local=file_path_local,
         file_path_data="",
+        flush_cache_dir=False,
         env_title="Local",
         env_id="001_local",
         logging_config=LoggingConfig(
@@ -28,6 +29,7 @@ def run_main():
         env=env,
         stage_title="Preload Data",
         stage_id="001_preload",
+        flush_cache_dir=False,
         ignore_cache=False,
         inp=ExampleStage001Input(),
         stage_config=ExampleStage001Config(
@@ -41,6 +43,7 @@ def run_main():
         env=env,
         stage_title="Filter Data",
         stage_id="002_filter",
+        flush_cache_dir=False,
         ignore_cache=False,
         inp=ExampleStage002Input(
             stage_001_out=stage_001_out

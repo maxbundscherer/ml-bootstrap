@@ -40,6 +40,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
                  stage_config: T_CONFIG,
                  stage_title: str = "Preload Data",
                  stage_id: str = "001_preload",
+                 flush_cache_dir=False,
                  ignore_cache: bool = False
                  ):
 
@@ -57,6 +58,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
             file_path_data=env.get_context().get_file_path_data(),
             file_path_out=env.get_context().get_file_path_out(stage_id + "/"),
             file_path_cache=env.get_context().get_file_path_cache(stage_id + "/"),
+            flush_cache_dir=flush_cache_dir,
             create_dir_on_demand=True
         )
 

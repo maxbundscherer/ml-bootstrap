@@ -18,7 +18,8 @@ tbd tbd tbd
 
 - `conda create --name py311tbd python=3.11`
 - `conda activate py311tbd`
-- `pip install -r requirements.txt`
+- `pip install -r requirements.txt` (install requirements)
+- `pip freeze > requirements.txt` (export requirements)
 
 ### Run
 
@@ -26,8 +27,8 @@ tbd tbd tbd
 
 ### Own project
 
-- Add `main.py` to your project
-- Add `Stages` to `stages/`
+- Add `main.py` to your project (use `main_example.py` as template)
+- Add Stages to `stages/` (see Stages in `stages/example.py`)
 - Run `python main.py`
 
 ## TODOS

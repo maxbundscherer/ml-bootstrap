@@ -13,6 +13,7 @@ class Environment:
                  file_path_data: str = "",
                  env_title: str = "Local",
                  env_id: str = "001_local",
+                 flush_cache_dir=False
                  ):
 
         # Logging
@@ -52,6 +53,7 @@ class Environment:
                 file_path_data=file_path_data,
                 file_path_out=file_path_local + env_id + "/out/",
                 file_path_cache=file_path_local + env_id + "/cache/",
+                flush_cache_dir=flush_cache_dir,
                 create_dir_on_demand=False
             ),
             logging_prefix="Env-" + env_id,
