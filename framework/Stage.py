@@ -12,11 +12,12 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
     """
     A Stage is a single step in a pipeline.
     It has an input (T_INPUT), a configuration (T_CONFIG) and an output (T_OUTPUT).
-    It can be previewed (overwrite _preview())
-    It can be cached (overwrite _get_cached())
+    Implement _preview() to do a preview of the stage.
+    Implement _get_cached() to get the output from the cache. Please use CacheHelper from framework.
     Implement _process() to do the actual work.
     Implement _write_cache() to write the output to the cache. Please use CacheHelper from framework.
     Implement _after_process() to do something after the processing.
+    Please see stages/ExampleStage001.py for an example.
     """
 
     @staticmethod
