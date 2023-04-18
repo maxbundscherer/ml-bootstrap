@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from framework.Stage import Stage
-from framework.Context import Context
+from framework.Context import Context, SummaryText
 from stages.ExampleStage001 import ExampleStage001Output
 
 
@@ -38,3 +38,4 @@ class ExampleStage002(Stage[ExampleStage002Input, ExampleStage002Config, Example
     @staticmethod
     def _after_process(context: Context, out: ExampleStage002Output, conf: ExampleStage002Config):
         context.log_debug("Got final message '" + out.test_message + "'")
+        context.summary_add(SummaryText(message="My content is '" + out.test_message + "'"))

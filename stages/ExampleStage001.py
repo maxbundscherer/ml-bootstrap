@@ -56,4 +56,4 @@ class ExampleStage001(Stage[ExampleStage001Input, ExampleStage001Config, Example
     @staticmethod
     def _after_process(context: Context, out: ExampleStage001Output, conf: ExampleStage001Config):
         context.log_debug("Got content '" + out.message + "'")
-        context.summary_add(SummaryText(message="Test Summary"))
+        context.summary_add(SummaryText(message="My content is '" + out.message + "'"))

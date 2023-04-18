@@ -174,4 +174,4 @@ class Context:
 
     def summary_print(self):
         for item in self._summary:
-            self.log_info("[Summary] '" + item.message + "']")
+            self.log_info("[Summary] " + item.message)
