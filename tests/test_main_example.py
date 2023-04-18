@@ -16,8 +16,8 @@ class TestMainExample(TestCase):
             file_path_local=file_path_local,
             file_path_data="",
             flush_cache_dir=False,
-            env_title="Local Example",
-            env_id="001_local_example",
+            env_title="Local Example Test",
+            env_id="001_local_example_test",
             logging_config=LoggingConfig(
                 level=logging.DEBUG,
                 hide_prefix=False
@@ -56,4 +56,4 @@ class TestMainExample(TestCase):
 
         env.stop()
 
-        self.assertEqual(stage_002_out.test_message, "Hello World!1")
+        self.assertEqual(stage_002_out.test_message, "Hello World!")
