@@ -107,7 +107,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
             )
         else:
             # Cache hit
-            self._context.log_debug("[Already cached]")
+            self._context.log_debug("[Cached]")
 
         self._after_process(
             context=self._context,
