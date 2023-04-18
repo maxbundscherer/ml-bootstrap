@@ -32,9 +32,11 @@ def run_main():
         stage_id="001_preload",
         flush_cache_dir=False,
         ignore_cache=False,
-        inp=ExampleStage001Input(),
+        inp=ExampleStage001Input(
+            test_message="Hello"
+        ),
         stage_config=ExampleStage001Config(
-            test_file_name="test.txt"
+            test_message_suffix=" World"
         )
     )
     stage_001.preview()

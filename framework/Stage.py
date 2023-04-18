@@ -15,6 +15,7 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
     It can be previewed (overwrite _preview())
     It can be cached (overwrite _get_cached())
     Implement _process() to do the actual work.
+    Implement _write_cache() to write the output to the cache. Please use CacheHelper from framework.
     Implement _after_process() to do something after the processing.
     """
 
@@ -35,6 +36,12 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
                  inp: T_INPUT,
                  conf: T_CONFIG) -> T_OUTPUT:
         raise NotImplementedError()
+
+    @staticmethod
+    def _write_cache(context: Context,
+                     out: T_OUTPUT,
+                     conf: T_CONFIG):
+        pass
 
     @staticmethod
     def _after_process(context: Context,
@@ -116,6 +123,12 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
         else:
             # Cache hit
             self._context.log_debug("[Cached]")
+
+        self._write_cache(
+            context=self._context,
+            out=out,
+            conf=self._conf
+        )
 
         self._after_process(
             context=self._context,
