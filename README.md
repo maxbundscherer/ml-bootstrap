@@ -28,7 +28,7 @@ This repo is helping me to structure my machine learning projects in an efficien
 - Add `main.py` to your project (use `main_example.py` as template)
 - Add Stages to `stages/` (see [ExampleStages](stages/) and read [doc](framework/Stage.py))
 - Run `python main.py`
-- (Optional) See [tests](.github/workflows) (trigger GitHub actions)
+- (Optional) See [workflows](.github/workflows) (trigger GitHub actions) and [tests](tests/)
 
 ## Framework documentation
 
