@@ -100,7 +100,9 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
     def preview(self):
         self._context.log_space()
 
+        self._context.log_info("🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩")
         self._context.log_info("[Started Preview Stage '" + self._stage_title + "']")
+        # self._context.log_info("🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩")
         self._context.stopwatch_start("StPrev-" + self._stage_id)
 
         self._preview(
@@ -109,12 +111,16 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
             conf=self._conf
         )
         o = self._context.stopwatch_stop("StPrev-" + self._stage_id)
+        # self._context.log_info("🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩")
         self._context.log_info("[Stopped Preview Stage '" + self._stage_title + "' (" + o + ")]")
+        self._context.log_info("🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩")
 
     def process(self) -> T_OUTPUT:
         self._context.log_space()
 
+        self._context.log_info("🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫")
         self._context.log_info("[Started Stage '" + self._stage_title + "']")
+        # self._context.log_info("🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫")
         self._context.stopwatch_start("St-" + self._stage_id)
 
         out: T_OUTPUT = None
@@ -151,6 +157,8 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
         )
 
         o = self._context.stopwatch_stop("St-" + self._stage_id)
+        # self._context.log_info("🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫")
         self._context.log_info("[Stopped Stage '" + self._stage_title + "' (" + o + ")]")
+        self._context.log_info("🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫")
 
         return out
