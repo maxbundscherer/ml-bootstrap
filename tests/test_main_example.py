@@ -16,6 +16,7 @@ class TestMainExample(TestCase):
             file_path_local=file_path_local,
             file_path_data="",
             flush_cache_dir=False,
+            flush_out_dir=False,
             env_title="Local Example Test",
             env_id="001_local_example_test",
             logging_config=LoggingConfig(
@@ -31,6 +32,7 @@ class TestMainExample(TestCase):
             stage_title="Preload Data",
             stage_id="001_preload",
             flush_cache_dir=False,
+            flush_out_dir=False,
             ignore_cache=False,
             inp=ExampleStage001Input(
                 test_message="Hello"
@@ -47,6 +49,7 @@ class TestMainExample(TestCase):
             stage_title="Filter Data",
             stage_id="002_filter",
             flush_cache_dir=False,
+            flush_out_dir=False,
             ignore_cache=False,
             inp=ExampleStage002Input(
                 stage_001_out=stage_001_out

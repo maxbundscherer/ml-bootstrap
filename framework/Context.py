@@ -13,6 +13,7 @@ class PathConfig:
     file_path_out: str
     file_path_cache: str
     flush_cache_dir: bool
+    flush_out_dir: bool
     create_dir_on_demand: bool
 
 
@@ -58,6 +59,13 @@ class Context:
                 shutil.rmtree(path_config.file_path_cache)
                 self.log_space()
                 self.log_debug("[Flush Cache Folder '" + path_config.file_path_cache + "']")
+
+        if path_config.flush_out_dir:
+            if os.path.exists(path_config.file_path_out):
+                # os.removedirs() # Complicated (must be empty)
+                shutil.rmtree(path_config.file_path_out)
+                self.log_space()
+                self.log_debug("[Flush Out Folder '" + path_config.file_path_out + "']")
 
         self._path_config: PathConfig = path_config
 
