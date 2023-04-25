@@ -4,7 +4,7 @@ import pathlib
 from framework.Config import LoggingConfig
 from framework.Environment import Environment
 from stages.ExampleStage001 import ExampleStage001, ExampleStage001Input, ExampleStage001Config, ExampleStage001Output
-from stages.ExampleStage002 import ExampleStage002, ExampleStage002Config, ExampleStage002Input
+from stages.ExampleStage002 import ExampleStage002, ExampleStage002Config, ExampleStage002Input, ExampleStage002Output
 
 
 def run_main():
@@ -57,7 +57,7 @@ def run_main():
         stage_config=ExampleStage002Config()
     )
     # stage_002.preview()
-    stage_002.process()
+    _: ExampleStage002Output = stage_002.process()
 
     env.stop()
 
