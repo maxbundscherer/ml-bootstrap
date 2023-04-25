@@ -135,15 +135,14 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
                 inp=self._inp,
                 conf=self._conf
             )
+            self._write_cache(
+                context=self._context,
+                out=out,
+                conf=self._conf
+            )
         else:
             # Cache hit
             self._context.log_debug("[Cached]")
-
-        self._write_cache(
-            context=self._context,
-            out=out,
-            conf=self._conf
-        )
 
         self._after_process(
             context=self._context,
