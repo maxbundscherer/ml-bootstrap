@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from framework.CacheHelper import FileCacheHelper
 from framework.Stage import Stage
-from framework.Context import Context, SummaryText
+from framework.Context import Context, SummaryText, SummaryAccuracy
 
 
 @dataclass
@@ -57,3 +57,6 @@ class ExampleStage001(Stage[ExampleStage001Input, ExampleStage001Config, Example
     def _after_process(context: Context, out: ExampleStage001Output, conf: ExampleStage001Config) -> None:
         context.log_debug("Got content '" + out.message + "'")
         context.summary_add(SummaryText(message="My content is '" + out.message + "'"))
+        context.summary_add(SummaryAccuracy(identifier="testAc1", accuracy=0.5))
+        context.summary_add(SummaryAccuracy(identifier="testAc2", accuracy=0.7))
+        context.summary_add(SummaryAccuracy(identifier="testAc3", accuracy=0.1))

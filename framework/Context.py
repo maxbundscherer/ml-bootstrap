@@ -27,6 +27,13 @@ class SummaryText(SummaryItem):
         super().__init__(message=message)
 
 
+class SummaryAccuracy(SummaryItem):
+    def __init__(self, identifier: str, accuracy: float):
+        self.identifier = identifier
+        self.accuracy = accuracy
+        super().__init__(message=str(accuracy) + " by " + identifier)
+
+
 class Context:
 
     def __init__(self,
@@ -181,5 +188,24 @@ class Context:
         self._summary.append(item)
 
     def summary_print(self):
+
+        sum_text: [SummaryText] = []
+        sum_ac: [SummaryAccuracy] = []
+
         for item in self._summary:
-            self.log_info("[Summary] " + item.message)
+
+            if isinstance(item, SummaryText):
+                sum_text.append(item)
+            elif isinstance(item, SummaryAccuracy):
+                sum_ac.append(item)
+            else:
+                raise ValueError("Unknown SummaryItem type")
+
+        sum_ac.sort(key=lambda x: x.accuracy, reverse=True)
+
+        for item in sum_ac:
+            item: SummaryAccuracy = item
+            self.log_info("[Summary AC] " + item.message)
+
+        for item in sum_text:
+            self.log_info("[Summary TX] " + item.message)
