@@ -29,9 +29,9 @@ class SummaryText(SummaryItem):
 
 class SummaryAccuracy(SummaryItem):
     def __init__(self, identifier: str, accuracy: float):
-        self.identifier = identifier
-        self.accuracy = accuracy
-        super().__init__(message=str(accuracy) + " by " + identifier)
+        self.identifier: str = identifier
+        self.accuracy: float = accuracy
+        super().__init__(message=str(round(accuracy, 3)) + " by " + identifier)
 
 
 class Context:
