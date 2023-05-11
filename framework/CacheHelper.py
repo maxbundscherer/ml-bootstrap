@@ -51,10 +51,21 @@ class FileCacheHelper(CacheHelperInterface[str]):
             return None
 
     @staticmethod
-    def check_if_all_file_exists(context: Context, file_names: [str]) -> bool:
+    def check_if_all_file_exists_cache(context: Context, file_names: [str]) -> bool:
 
         for file_name in file_names:
             if not os.path.exists(context.get_file_path_cache(file_name)):
+                context.log_debug("File not in cache: " + file_name)
+                return False
+
+        return True
+
+    @staticmethod
+    def check_if_all_file_exists_out(context: Context, file_names: [str]) -> bool:
+
+        for file_name in file_names:
+            if not os.path.exists(context.get_file_path_out(file_name)):
+                context.log_debug("File not in out: " + file_name)
                 return False
 
         return True

@@ -58,5 +58,5 @@ This repo is helping me to structure my machine learning projects in an efficien
 
 - There are different cache helpers (see [CacheHelper](framework/CacheHelper.py)) included
     - Use `PandasCacheHelper` for pandas dataframes
-    - Use `FileCacheHelper` for files (there is a method `check_if_all_file_exists(...)` to check if all files exists
-      instead of reading them)
+    - Use `FileCacheHelper` for files (there is a method `check_if_all_file_exists_*(...)` to check if all files exists
+      in * directory instead of reading them)

@@ -29,7 +29,7 @@ class ExampleStage001(Stage[ExampleStage001Input, ExampleStage001Config, Example
     @staticmethod
     def _get_cached(context: Context, inp: ExampleStage001Input, conf: ExampleStage001Config) -> ExampleStage001Output:
         # Alternative - Only check if file exists
-        # if FileCacheHelper.check_if_all_file_exists(context=context, file_names=["testfile.txt"]):
+        # if FileCacheHelper.check_if_all_file_exists_cache(context=context, file_names=["testfile.txt"]):
         #     return ExampleStage001Output(
         #         message="Hello World"
         #     )
