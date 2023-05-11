@@ -27,6 +27,9 @@ def run_main():
 
     env.start()
 
+    # Custom Config (Logger, etc.)
+    # logging.getLogger('matplotlib').setLevel(logging.INFO)
+
     stage_001: ExampleStage001 = ExampleStage001(
         env=env,
         stage_title="Preload Data",

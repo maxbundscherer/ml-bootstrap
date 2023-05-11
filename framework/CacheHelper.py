@@ -49,3 +49,12 @@ class FileCacheHelper(CacheHelperInterface[str]):
             return m
         else:
             return None
+
+    @staticmethod
+    def check_if_all_file_exists(context: Context, file_names: [str]) -> bool:
+
+        for file_name in file_names:
+            if not os.path.exists(context.get_file_path_cache(file_name)):
+                return False
+
+        return True

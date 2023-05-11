@@ -2,36 +2,9 @@ import logging
 import os
 import shutil
 import time
-from dataclasses import dataclass
 
-from framework.Config import LoggingConfig
-
-
-@dataclass
-class PathConfig:
-    file_path_data: str
-    file_path_out: str
-    file_path_cache: str
-    flush_cache_dir: bool
-    flush_out_dir: bool
-    create_dir_on_demand: bool
-
-
-@dataclass
-class SummaryItem:
-    message: str
-
-
-class SummaryText(SummaryItem):
-    def __init__(self, message: str):
-        super().__init__(message=message)
-
-
-class SummaryAccuracy(SummaryItem):
-    def __init__(self, identifier: str, accuracy: float):
-        self.identifier: str = identifier
-        self.accuracy: float = accuracy
-        super().__init__(message=str(round(accuracy, 3)) + " by " + identifier)
+from framework.Config import LoggingConfig, PathConfig
+from framework.Summary import SummaryAccuracy, SummaryText, SummaryItem
 
 
 class Context:
@@ -203,9 +176,9 @@ class Context:
 
         sum_ac.sort(key=lambda x: x.accuracy, reverse=True)
 
+        for item in sum_text:
+            self.log_info("[Summary TX] " + item.message)
+
         for item in sum_ac:
             item: SummaryAccuracy = item
             self.log_info("[Summary AC] " + item.message)
-
-        for item in sum_text:
-            self.log_info("[Summary TX] " + item.message)

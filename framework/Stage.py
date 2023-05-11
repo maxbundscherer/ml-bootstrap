@@ -24,30 +24,47 @@ class Stage(Generic[T_INPUT, T_CONFIG, T_OUTPUT]):
     def _preview(context: Context,
                  inp: T_INPUT,
                  conf: T_CONFIG) -> None:
+        """
+        Method does not return anything.
+        """
         pass
 
     @staticmethod
     def _get_cached(context: Context,
                     inp: T_INPUT,
                     conf: T_CONFIG) -> T_OUTPUT:
+        """
+        Method return None if no cache is available.
+        Implement get cache logic here (please use CacheHelper from framework).
+        """
         pass
 
     @staticmethod
     def _process(context: Context,
                  inp: T_INPUT,
                  conf: T_CONFIG) -> T_OUTPUT:
+        """
+        Implement stage logic here.
+        """
         raise NotImplementedError()
 
     @staticmethod
     def _write_cache(context: Context,
                      out: T_OUTPUT,
                      conf: T_CONFIG) -> None:
+        """
+        Implement write cache logic here (please use CacheHelper from framework).
+        """
         pass
 
     @staticmethod
     def _after_process(context: Context,
                        out: T_OUTPUT,
                        conf: T_CONFIG) -> None:
+        """
+        Implement after process logic here.
+        Method is called after _process() or _get_cached().
+        """
         pass
 
     def __init__(self,

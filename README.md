@@ -26,13 +26,14 @@ This repo is helping me to structure my machine learning projects in an efficien
 
 - Read doc below
 - Add `main.py` to your project (use `main_example.py` as template)
-- Add Stages to `stages/` (read [doc](framework/Stage.py) and see [ExampleStages](stages/))
+- Add Stages to `stages/` (read [Stage Documentation](framework/Stage.py) and see [ExampleStages](stages/))
 - Run `python main.py`
 - (Optional) See [workflows](.github/workflows) (trigger GitHub actions) and [tests](tests/)
 
 ## Framework documentation
 
-Add `git@github.com:maxbundscherer/ml-bootstrap.git` to git-remotes (get updates from bootstrap repo)
+- Add `git@github.com:maxbundscherer/ml-bootstrap.git` to git-remotes (get updates from bootstrap repo)
+- Read [Stage Documentation](framework/Stage.py) and see [ExampleStages](stages/)
 
 ### Logging
 
@@ -50,3 +51,12 @@ Add `git@github.com:maxbundscherer/ml-bootstrap.git` to git-remotes (get updates
 
 - Use `context.start_stopwatch()` and `context.stop_stopwatch()` to measure time
 - Use `context.summary_add(*)` to add a summary entry (logged at the end of the environment)
+    - Use `SummaryText` to add a text entry (logs text at the end)
+    - Use `SummaryAccuracy` to add an accuracy entry (sorts and logs accuracy at the end)
+
+### Cache Helper
+
+- There are different cache helpers (see [CacheHelper](framework/CacheHelper.py)) included
+    - Use `PandasCacheHelper` for pandas dataframes
+    - Use `FileCacheHelper` for files (there is a method `check_if_all_file_exists(...)` to check if all files exists
+      instead of reading them)
